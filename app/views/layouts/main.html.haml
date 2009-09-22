@@ -1,0 +1,27 @@
+!!! XML
+!!! Strict
+%html{html_attrs}
+  %head
+    %title= page_title
+    = stylesheet_link_tag 'screen', :media => 'screen'
+    = stylesheet_link_tag 'print', :media => 'print'   
+    = sprockets_include_tag
+    
+  %body#dinshaw
+    #container.wrap
+      #header
+        %h1 dinshaw
+      #content
+        = flash_block
+        = yield
+        
+      #footer_spacer
+    #footer
+      .wrap
+        %ul
+          %li
+            = link_to "Unsubscribe from the email list", unsubscribe_path
+          %li
+            Two
+          %li.last
+            Three            

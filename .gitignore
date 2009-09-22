@@ -1,0 +1,16 @@
+.DS_Store
+log/*
+tmp/**/*
+*.swp
+
+public/sprockets.js
+public/system
+public/stylesheets/*.css
+
+db/sphinx
+db/schema.rb
+
+config/database.yml
+config/deploy.rb
+config/initializers/site_keys.rb
+config/initializers/smtp_gmail.rb

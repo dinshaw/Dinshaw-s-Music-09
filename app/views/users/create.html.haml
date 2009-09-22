@@ -1,0 +1,15 @@
+#email_list_info
+  - if @user.errors.on('email')
+    - if @user.errors.on('email').include?('^blank')
+      %p Are you trying to signup for the email list? It seems you entered nothing at all. I am here for you, but you gotta give me something to work with.
+
+    - elsif @user.errors.on('email').include?('invalid')
+      %p The email address you entered looks suspiciously unlike a email address. Please make sure you typed it in right.
+
+    - elsif @user.errors.on('email').include?('dup')
+      %p 
+        The email address you entered is already on my list. Are you not getting the emails? If so, please 
+        = mail_to 'Email me', 'dummy@asd.com'
+        so I can make sure this gets fixed.
+  
+  = render :partial => "shared/email_list_form"

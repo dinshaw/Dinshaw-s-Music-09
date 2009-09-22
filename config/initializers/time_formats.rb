@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:employer] = Time::DATE_FORMATS[:featured_on] = "%B, %Y"

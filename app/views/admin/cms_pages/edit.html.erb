@@ -1,0 +1,12 @@
+<p><%= link_to 'Show', ['admin', @cms_page] %> | <%= link_to 'Back', admin_cms_pages_path %></p>
+
+<% form_for(['admin', @cms_page]) do |f| %>
+  <%= f.error_messages %>
+
+	<%= render :partial => 'cms_page_fields', :locals => { :f => f } %>  <p>
+    <%= f.submit 'Update', :class => :btn %>
+  </p>
+<% end %>
+
+
+

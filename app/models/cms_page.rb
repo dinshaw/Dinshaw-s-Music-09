@@ -1,0 +1,20 @@
+class CmsPage < ActiveRecord::Base
+  acts_as_list :scope => :parent_id
+  # acts_as_tree
+  has_friendly_id :path
+  
+  validates_presence_of :title
+  validates_presence_of :path
+  validates_uniqueness_of :path
+  
+  default_scope :order => :reference_string
+  
+  def self.get(reference_string)
+    find_by_reference_string(reference_string) || self.new(:title => reference_string, :sub_title => "CMS Page Missing  - #{reference_string}", :path => '')
+  end
+  
+  def is_current?(uri)
+    self.path.blank? ? false : uri.match(self.path) || uri.match((self.parent.path rescue "-"))
+  end
+  
+end

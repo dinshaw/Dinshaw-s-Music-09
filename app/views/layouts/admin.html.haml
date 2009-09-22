@@ -1,0 +1,25 @@
+!!! XML
+!!! Strict
+%html{html_attrs}
+  %head
+    %title= page_title
+    = admin_assistant_includes
+
+  %body#admin
+    #container.wrap
+      %h1
+        Admin Area
+      %p
+        = link_to "Public Side", root_path
+
+    #admin_nav
+      %ul
+        %li
+          %a{:href => '/admin/songs'} Songs
+        %li
+          %a{:href => '/admin/recordings'} Recordings
+        %li
+          %a{:href => '/admin/recording_sessions'} Recording Sessions
+
+    #admin_content
+      = yield
