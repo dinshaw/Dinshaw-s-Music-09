@@ -10,7 +10,7 @@ Rails::Initializer.run do |config|
   config.gem 'haml', :lib => 'haml'
   config.gem 'capistrano'
   # config.gem 'ruby-openid', :lib => 'openid'
-  config.gem 'rubyist-aasm', :lib => 'aasm'
+  config.gem 'rubyist-aasm', :lib => 'aasm', :source => 'http://gems.github.com'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
   # config.gem 'prawn', :source => 'http://gems.github.com'
   config.gem 'chronic', :source => 'http://gems.github.com'
@@ -19,7 +19,7 @@ Rails::Initializer.run do |config|
   # config.gem 'hpricot', :source => 'http://code.whytheluckystiff.net'
   # config.gem 'sqlite3-ruby', :lib => 'sqlite3'
   config.gem "friendly_id"
-  
+  config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com'
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
@@ -35,6 +35,3 @@ Rails::Initializer.run do |config|
   config.time_zone = 'UTC'
 
 end
-require 'aasm'
-require 'friendly_id'
-require 'redcloth'

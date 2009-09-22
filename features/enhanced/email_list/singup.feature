@@ -4,8 +4,8 @@ Feature: Sign up for the emal List
   I should submit my email
 
   Scenario: singup with good email
-    Given I am on "the homepage"
-    When I fill in "user_email" with "info@dinshaw.us"
+    Given I go to "the homepage"
+    When I fill in "Email" with "info@dinshaw.us"
     And I press "Signup"
     Then I should be on 'the homepage'
     And I should not see "Signup"

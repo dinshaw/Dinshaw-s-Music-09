@@ -1,6 +1,8 @@
 # Sets up the Rails environment for Cucumber
 ENV["RAILS_ENV"] ||= "cucumber"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
+
 require 'cucumber/rails/world'
 
 # Comment out the next line if you don't want Cucumber Unicode support
@@ -17,5 +19,5 @@ Webrat.configure do |config|
   config.mode = :rails
 end
 
-# require 'cucumber/rails/rspec'
+require 'cucumber/rails/rspec'
 require 'webrat/core/matchers'
