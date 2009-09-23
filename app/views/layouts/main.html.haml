@@ -6,13 +6,17 @@
     = stylesheet_link_tag 'screen', :media => 'screen'
     = stylesheet_link_tag 'print', :media => 'print'   
     = sprockets_include_tag
+    = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
     
   %body#dinshaw
     #container.wrap
       #header
         %h1 dinshaw
       #content
-        = flash_block
+        #flash_block
+          - flash.each do |name, msg|
+            = content_tag :div, msg, :id => "flash_#{name}" unless msg.blank?
+          
         = yield
         
       #footer_spacer

@@ -20,12 +20,6 @@ module ApplicationHelper
     %(<meta name="#{name}" content="#{content}" />)
   end
 
-  def flash_block
-    if [!flash[:message].blank?,!flash[:notice].blank?,!flash[:error].blank?].any?
-      "<p id=\"flash\">#{flash[:notice]}#{flash[:error]}#{flash[:message]}</p>" 
-    end
-  end
-
   def is(value)
     value ? "Yes" : "No"
   end

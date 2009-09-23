@@ -4,8 +4,11 @@
   - vendor/sprockets/*/src
   - vendor/plugins/*/javascripts
 :source_files:
-  - app/javascripts/swfobject.js  
-  - app/javascripts/jquery.js  
-  - app/javascripts/application.js
+  - app/javascripts/swfobject.js
+  # - app/javascripts/application.js
+  - app/javascripts/jquery.js
+  - app/javascripts/links.js
+  - app/javascripts/forms.js
+
 
 

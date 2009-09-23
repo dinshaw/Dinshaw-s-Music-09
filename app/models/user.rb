@@ -17,9 +17,11 @@ class User < ActiveRecord::Base
   end
   # ---------------------------------------
   
-  validates_presence_of     :email, :message => '^blank'
-  validates_uniqueness_of   :email, :message => '^duplicate'
-  validates_format_of       :email, :with => Authentication.email_regex, :message => '^invalid'
+  validates_presence_of     :email, :message => 'Are you trying to signup for the email list? It seems you entered nothing at all. I am here for you, but you gotta give me something to work with.'
+
+  validates_format_of       :email, :with => Authentication.email_regex, :message => 'The email address you entered looks suspiciously unlike an email address. Please make sure you typed it in right.'
+
+  validates_uniqueness_of   :email, :message => 'The email address you entered is already on my list. Are you not getting the emails? If so, please email me so I can make sure this gets fixed.'
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation

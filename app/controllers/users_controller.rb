@@ -13,13 +13,15 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.register! if @user && @user.valid?
     success = @user && @user.valid?
-    flash[:message] = "Thank you for signing up!"
+    
     if success && @user.errors.empty?      
+      flash[:message] = "Thank you for signing up! We have sent a confirmation email to #{@user.email}. Check your junk mail if you don't see it in a few minutes." 
       respond_to do |format|
         format.html { redirect_to root_url }
-        format.js
+        format.js { render :template => 'users/success', :layout => false }
       end
     else
+      flash[:error] = @user.errors.on(:email).is_a?(Array) ? @user.errors.on(:email).first : @user.errors.on(:email)    
       respond_to do |format|
         format.html 
         format.js

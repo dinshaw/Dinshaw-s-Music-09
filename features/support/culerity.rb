@@ -1,15 +1,21 @@
 require 'culerity'
 
 Before do
+  %W(User).each do |class_name|
+    class_name.constantize.delete_all
+  end
   $rails_server ||= Culerity::run_rails
   sleep 5
   $server ||= Culerity::run_server
-  $browser = Culerity::RemoteBrowserProxy.new $server, {:browser => :firefox}
+  $browser = Culerity::RemoteBrowserProxy.new $server, {
+    :browser => :firefox,
+    :javascript_exceptions => false,
+    :log_level => :all,
+    :resynchronize => true
+  }
+  
   @host = 'http://localhost:3001'
   
-  [User].each do |model|
-    model.delete_all
-  end
 end
 
 at_exit do
