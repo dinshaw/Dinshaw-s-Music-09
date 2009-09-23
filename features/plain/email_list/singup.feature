@@ -20,7 +20,7 @@ Feature: Sign up for the emal List
     Given I am on "the signup page"
     When I fill in "user_email" with "infodinshawus"
     And I press "Signup"
-    And I should see "unlike a email address"
+    And I should see "unlike an email address"
 
   Scenario: singup with no email
     Given I am on "the signup page"

@@ -1,9 +1,6 @@
 require 'culerity'
 
 Before do
-  %W(User).each do |class_name|
-    class_name.constantize.delete_all
-  end
   $rails_server ||= Culerity::run_rails
   sleep 5
   $server ||= Culerity::run_server
@@ -22,4 +19,7 @@ at_exit do
   $browser.exit if $browser
   $server.exit_server if $server
   Process.kill(6, $rails_server.pid.to_i) if $rails_server
+  %w(User).each do |class_name|
+    class_name.constantize.delete_all
+  end
 end
