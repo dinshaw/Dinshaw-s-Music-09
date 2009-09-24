@@ -1,4 +1,5 @@
 .DS_Store
+webrat*
 log/*
 tmp/**/*
 *.swp
