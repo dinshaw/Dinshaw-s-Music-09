@@ -1,0 +1,7 @@
+#notification
+  %h2= @notification.title
+  #body
+    = @notification.body
+
+- form_for @notification, :url => send_notification_path(@notification), :method => :post do |f|
+  = f.submit "Send"

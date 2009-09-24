@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.resources :songs, :recordings
   map.resources :users
-
+  map.resources :notifications, :member => { :send => :post }
   map.unsubscribe '/unsubscribe', :controller => 'users', :action => 'unsubscribe'
 
   map.resource :session
