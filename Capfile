@@ -85,35 +85,34 @@ namespace :deploy do
   desc "Make sym link for user content and sphinx db"
   task :make_sym_links_for_user_content do
     run "ln -s  #{shared_path}/db/sphinx #{release_path}/db/sphinx"    
-    # run "ln -s  #{shared_path}/public/system #{release_path}/public/system"        
+    run "ln -s  #{shared_path}/public/system #{release_path}/public/system"        
   end
   after "deploy:update_code", "deploy:make_sym_links_for_user_content"
   
   # create custom maintenence page
   namespace :web do
     desc "Serve up a custom maintenance page."
-  
     task :disable, :roles => :web do
       require 'erb'
       on_rollback { run "rm #{shared_path}/system/maintenance.html" }
       reason = ENV['REASON']
       deadline = ENV['UNTIL']
-  
       template = File.read("app/views/layouts/maintenance.html.erb")
-  
       page = ERB.new(template).result(binding)
-  
       put page, "#{shared_path}/system/maintenance.html", :mode => "0755"
     end
   end
   
   desc "Reindex and restart sphinx"
   task :sphinx_in do
-    run "cd #{release_path}; rake ts:stop RAILS_ENV=#{rails_env}"     
-    run "cd #{release_path}; rake ts:in RAILS_ENV=#{rails_env}"    
-    run "cd #{release_path}; rake ts:start RAILS_ENV=#{rails_env}"    
+    run "cd #{release_path}; rake ts:rebuild RAILS_ENV=#{rails_env}"     
   end
+  after "deploy:update_code", "deploy:sphinx_in"
   
   before "deploy:update_code", 'deploy:web:disable'
   after "deploy:restart", 'deploy:web:enable'
+  
+  after "deploy:stop",    "delayed_job:stop"
+  after "deploy:start",   "delayed_job:start"
+  after "deploy:restart", "delayed_job:restart"
 end

@@ -1,0 +1,3 @@
+$('#flash_block').html('<div id="flash_error"><%= escape_javascript(@user.errors.on(:email)) %></div>');
+$('.submit', '#email_list_form').show();
+$('.progress_spinner', '#email_list_form').hide();

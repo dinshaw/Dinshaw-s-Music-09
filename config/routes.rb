@@ -1,24 +1,26 @@
 ActionController::Routing::Routes.draw do |map|
-
-  
   map.root :controller => 'public', :action => 'index'
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.login '/login', :controller => 'sessions', :action => 'new'
-  map.register '/register', :controller => 'users', :action => 'create'
-  map.signup '/signup', :controller => 'users', :action => 'new'
-  map.resources :songs, :recordings
+
+  map.resource :user_session
+  map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
+  map.login '/login', :controller => 'user_sessions', :action => 'new'
+
   map.resources :users
-  map.resources :notifications, :member => { :send => :post }
+  map.resource :account, :controller => "users"
+  map.activate '/activate/:perishable_token', :controller => 'users', :action => 'activate', :perishable_token => nil
+  # map.register '/register', :controller => 'users', :action => 'create'
+  # map.signup '/signup', :controller => 'users', :action => 'new'
   map.unsubscribe '/unsubscribe', :controller => 'users', :action => 'unsubscribe'
 
-  map.resource :session
+  map.resources :songs, :recordings
+  map.resources :notifications, :member => { :deliver => :post }
 
-  map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
+  map.namespace :admin do |admin|
+    admin.resources :songs, :recordings, :recording_sessions, :notifications
+  end
 
-  map.resources :users, :member => { :suspend   => :put, :unsuspend => :put, :purge => :delete }
-  
-  SprocketsApplication.routes(map) 
-  
+  SprocketsApplication.routes(map)
+
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action.:format'
   map.connect ':controller/:action/:id.:format'

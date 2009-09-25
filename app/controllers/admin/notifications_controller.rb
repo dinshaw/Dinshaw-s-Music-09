@@ -12,10 +12,8 @@ class Admin::NotificationsController < AdminController
     @notification = Notification.find(params[:id])
   end
   
-  def send
-    @notification = Notification.find(params[:id])
-    User.active.each do |u|
-    UserMailer.deliver_notification(@notification, u)
-    
+  def deliver
+    Delayed::Job.enqueue(MailingJob.new(params[:notification_id]), -3, )
+    flash[:message] = 'Notifications being sent...'
   end
 end

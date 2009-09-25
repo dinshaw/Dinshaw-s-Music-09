@@ -22,5 +22,5 @@ $(function($){//on document ready
   // hide by default
   $('.progress_spinner').hide('fast');
   
-  $("#email_form").submitWithAjax();
+  $("#email_list_form").submitWithAjax();
 });

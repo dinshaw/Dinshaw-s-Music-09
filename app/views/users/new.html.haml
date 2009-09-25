@@ -1,1 +1,9 @@
-= render :partial => "shared/email_list_form"
+- if defined?(email_list) || @email_list
+  = error_messages_for :user
+  = render :partial => "users/new_email_only"
+- else
+  %h1 Register
+  - form_for @user, :url => account_path do |f|
+    = f.error_messages
+    = render :partial => "form", :object => f
+    = f.submit "Register"

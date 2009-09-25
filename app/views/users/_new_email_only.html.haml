@@ -1,0 +1,7 @@
+#email_form_container
+  - form_for @user, :url => account_path, :html => { :id => :email_list_form } do |f|
+    = render :partial => "users/form", :object => f, :locals => { :email_list => true }
+
+    %span.submit_container
+      = f.submit 'Signup', :class => :submit
+      = image_tag "progress.gif", :class => :progress_spinner

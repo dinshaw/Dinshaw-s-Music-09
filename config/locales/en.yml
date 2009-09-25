@@ -2,4 +2,32 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  flash:
+    user:
+      create:
+        success: You rock! You are signed up. You should have a confirmation email in your INBOX or spam folder. You have to clck the link in ot before you will start receiving emails.
+      activate:
+        not_found: Email list activation faild. ake sure the link is right. It should look like http://dinshaw.us/activate/some-crazy-code-here. If you are still having problems, send me an email
+        
+  authlogic:
+    error_messages:
+      login_blank: can not be blank
+      login_not_found: is not valid
+      login_invalid: should use only letters, numbers, spaces, and .-_@ please.
+      consecutive_failed_logins_limit_exceeded: Consecutive failed logins limit exceeded, account is disabled.
+      email_invalid: Are you trying to signup for the email list? The address you entered looks suspiciously unlike an email address.
+      password_blank: can not be blank
+      password_invalid: is not valid
+      not_active: Your account is not active
+      not_confirmed: Your account is not confirmed
+      not_approved: Your account is not approved
+      no_authentication_details: You did not provide any details for authentication.
+      models:
+        user_session: UserSession (or whatever name you are using)
+        attributes:
+          user_session: (or whatever name you are using)
+          login: login
+          email: email
+          password: password
+          remember_me: remember me
+          
