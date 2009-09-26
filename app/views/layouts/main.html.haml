@@ -11,6 +11,12 @@
   %body#dinshaw
     #container.wrap
       #header
+        #nav
+          %ul
+            %li= link_to "Home", root_url
+            %li= link_to "Songs", songs_url
+            %li= link_to "gigs", gigs_url
+            
         %h1 dinshaw
       #content
         #flash_block
