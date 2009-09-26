@@ -13,7 +13,7 @@ class Admin::NotificationsController < AdminController
   end
   
   def deliver
-    Delayed::Job.enqueue(MailingJob.new(params[:notification_id]), -3, )
+    Delayed::Job.enqueue( MailingJob.new(params[:notification_id]), -3 ) 
     flash[:message] = 'Notifications being sent...'
   end
 end

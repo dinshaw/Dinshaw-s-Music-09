@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       # pass email to DelayedJob
       UserMailer.send_later(:deliver_signup_notification, @user)
       respond_to do |format|
-        format.html { redirect_back_or_default account_url }
+        format.html { redirect_to root_url }
         format.js { render :action => :success }
       end
     else

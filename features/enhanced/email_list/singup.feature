@@ -11,7 +11,7 @@ Feature: Sign up for the emal List
     And I wait
     Then I should be on "the homepage"
     And "button" with "text" "Signup" should be visible
-    And I should see "nothing at all"
+    And I should see "unlike an email address"
 
     When I fill in "user_email" with "infodinshawus"
     And I press "Signup"
@@ -25,7 +25,7 @@ Feature: Sign up for the emal List
     And I wait
     Then I should be on "the homepage"
     And I should not see "Signup"
-    And I should see "Thank you for signing up!"
+    And I should see "You rock! You are signed up"
 
 
     Given I go to "the homepage"

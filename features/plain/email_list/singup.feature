@@ -4,27 +4,27 @@ Feature: Sign up for the emal List
   I should submit my email
 
   Scenario: singup with good email
-    Given I am on "the signup page"
+    Given I am on "the homepage"
     When I fill in "user_email" with "info@dinshaw.us"
     And I press "Signup"
-    And I should see "Thank you for signing up!"
+    And I should see "You rock! You are signed up"
     
   Scenario: singup a duplicate email
     Given there is a user with email "info@dinshaw.us"
-    Given I am on "the signup page"
+    Given I am on "the homepage"
     When I fill in "user_email" with "info@dinshaw.us"
     And I press "Signup"
     And I should see "already on my list"
 
   Scenario: singup with bad email
-    Given I am on "the signup page"
+    Given I am on "the homepage"
     When I fill in "user_email" with "infodinshawus"
     And I press "Signup"
     And I should see "unlike an email address"
 
   Scenario: singup with no email
-    Given I am on "the signup page"
+    Given I am on "the homepage"
     When I fill in "user_email" with ""
     And I press "Signup"
-    And I should see "you entered nothing"
+    And I should see "suspiciously unlike an email address"
 

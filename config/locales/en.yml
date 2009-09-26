@@ -16,6 +16,7 @@ en:
       login_invalid: should use only letters, numbers, spaces, and .-_@ please.
       consecutive_failed_logins_limit_exceeded: Consecutive failed logins limit exceeded, account is disabled.
       email_invalid: Are you trying to signup for the email list? The address you entered looks suspiciously unlike an email address.
+      email_dup: The email you entered is already on my list. Are not getting the emails? Let me know about this so I can make it right.
       password_blank: can not be blank
       password_invalid: is not valid
       not_active: Your account is not active
