@@ -1,4 +1,4 @@
-- if email_list
+- if defined?(email_list)
   = hidden_field_tag :email_list, true
   = form.hidden_field :password, :value => 'password'
   = form.hidden_field :password_confirmation, :value => 'password'

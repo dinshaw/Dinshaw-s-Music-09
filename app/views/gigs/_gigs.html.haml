@@ -1,0 +1,21 @@
+#gigs
+  %h2 Gigs
+  - @gigs.each do |gig| 
+    .gig
+      %h3
+        %strong
+          = link_to gig.venue.name, gig
+        /
+        = gig.time_start.to_s(:short)
+        to
+        = gig.time_end.to_s(:short)
+      %p 
+        = gig.description
+      
+      - if defined?(full)
+        %p 
+          = gig.venue.directions
+    
+
+
+  

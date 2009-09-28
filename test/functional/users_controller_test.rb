@@ -8,7 +8,6 @@ class UsersControllerTest < ActionController::TestCase
 
     should_assign_to :user
     should_respond_with :redirect
-    should_not_set_the_flash
     should_change("User count", :by => 1) { User.count }
   end
   
@@ -19,8 +18,7 @@ class UsersControllerTest < ActionController::TestCase
 
     should_assign_to :user
     should_respond_with :success
-    should_not_set_the_flash
-    should_render_template :create
+    should_render_template :new
     should_change("User count", :by => 0) { User.count }
   end
 end

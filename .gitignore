@@ -4,9 +4,9 @@ log/*
 tmp/**/*
 *.swp
 
-public/sprockets.js
 public/system
 public/stylesheets/*.css
+public/javascripts/*.js
 
 db/sphinx
 db/schema.rb

@@ -1,0 +1,2 @@
+module RecordingSessionHelper
+end

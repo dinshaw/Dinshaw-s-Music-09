@@ -14,7 +14,9 @@ module NavigationHelpers
       signup_path
       
     when /the unsubscribe page/
-      unsubscribe_path      
+      unsubscribe_path
+    when /the gigs page/
+      gigs_path            
 
     # Add more mappings here.
     # Here is a more fancy example:

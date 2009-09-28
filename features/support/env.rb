@@ -3,7 +3,13 @@ ENV["RAILS_ENV"] ||= "cucumber"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 
+require 'cucumber/rails/rspec'
 require 'cucumber/rails/world'
+require 'webrat/core/matchers'
+require 'machinist/active_record'
+require 'sham'
+require 'faker'
+require File.expand_path(File.join(File.dirname(__FILE__), "/../../test/blueprints.rb"))
 
 # Comment out the next line if you don't want Cucumber Unicode support
 # require 'cucumber/formatter/unicode'
@@ -19,5 +25,4 @@ Webrat.configure do |config|
   config.mode = :rails
 end
 
-require 'cucumber/rails/rspec'
-require 'webrat/core/matchers'
+

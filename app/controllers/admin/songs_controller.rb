@@ -1,6 +1,6 @@
 class Admin::SongsController < AdminController
   admin_assistant_for Song do |a|
-    a.actions << :destroy
+    # a.actions << :destroy
     a.index do |index|
       index.columns :title, :recordings
     end      
