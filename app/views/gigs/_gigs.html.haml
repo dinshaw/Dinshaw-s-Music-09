@@ -4,15 +4,15 @@
     .gig
       %h3
         %strong
-          = link_to gig.venue.name, gig
+          = link_to gig.venue.name, gigs_path
         /
-        = gig.time_start.to_s(:short)
-        to
-        = gig.time_end.to_s(:short)
+        = show_time(gig)
       %p 
         = gig.description
       
       - if defined?(full)
+        %p 
+          = gig.venue.location
         %p 
           = gig.venue.directions
     

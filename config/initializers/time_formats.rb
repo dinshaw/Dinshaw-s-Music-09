@@ -1,2 +1,2 @@
-GIG_TIME_FORMAT = "%a, %D,%l:%M %p"
-Time::DATE_FORMATS[:gig] = GIG_TIME_FORMAT
+GIG_TIME_FORMAT = Time::DATE_FORMATS[:gig] = "%a, %m/%d - %l:%M"
+GIG_END_TIME_FORMAT = Time::DATE_FORMATS[:end_time] = "%l:%M %p"

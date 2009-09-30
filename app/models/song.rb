@@ -1,4 +1,7 @@
 class Song < ActiveRecord::Base
   has_many :recordings
-  validates_presence_of :title, :lyrics, :composition_date, :composition_location
+  validates_presence_of :title
+  validates_presence_of :lyrics
+  validates_presence_of :composition_date
+  validates_presence_of :composition_location
 end

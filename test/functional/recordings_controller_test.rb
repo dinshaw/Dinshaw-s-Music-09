@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class RecordingsControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  context '#index.xml' do
+    setup do
+      get :index, :format => :xml
+    end
+    
+    should_render_template 'index.xml.builder'
+    should_assign_to :recordings
   end
 end

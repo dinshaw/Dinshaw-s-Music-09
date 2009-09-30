@@ -1,0 +1,18 @@
+#song
+  %h1 
+    = @song.title
+    
+  #recordings
+    %h2 
+      = "Recordings (#{@song.recordings.count})"
+    
+    %ul
+      - @song.recordings.each do |recording|
+        %li
+          = link_to recording.recording_session.title, recording.recording_session
+          ,
+          = recording.recording_session.start_date
+      
+    
+    
+  

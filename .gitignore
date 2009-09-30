@@ -6,7 +6,7 @@ tmp/**/*
 
 public/system
 public/stylesheets/*.css
-public/javascripts/*.js
+public/sprockets.js
 
 db/sphinx
 db/schema.rb

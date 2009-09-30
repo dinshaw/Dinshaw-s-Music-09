@@ -18,6 +18,9 @@ module NavigationHelpers
     when /the gigs page/
       gigs_path            
 
+    when /^(.*)'s song page$/i
+      song_path(Song.find_by_title($1))
+  
     # Add more mappings here.
     # Here is a more fancy example:
     #

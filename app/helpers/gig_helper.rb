@@ -13,7 +13,7 @@ module GigHelper
     s = []
     s << gig.time_start.to_s(:gig) if opts[:start]
     s << 'to' if opts[:start] && opts[:end]
-    s << gig.time_end.to_s(:gig) if opts[:end]
+    s << gig.time_end.to_s(:end_time) if opts[:end]
     s.join(" ")
   end
 end

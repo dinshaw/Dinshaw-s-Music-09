@@ -10,7 +10,6 @@ Before do
     :log_level => :all,
     :resynchronize => true
   }
-  
   @host = 'http://localhost:3001'
   
 end

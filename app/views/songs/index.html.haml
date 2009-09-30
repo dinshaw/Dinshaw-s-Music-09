@@ -1,5 +1,9 @@
 #songs
+  %h1 Songs
   - @songs.each do |song|
     .song
-      .title= song.title
+      %h3 
+        = link_to song.title, song
+      %p 
+        = link_to "recordings (#{song.recordings.count})", song
     
