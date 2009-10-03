@@ -1,0 +1,50 @@
+#container
+  +container
+  :border 1px solid red
+
+#nav ul
+  +column(24)
+  +no-bullets
+  :margin 0
+  :padding 0
+  :border 1px solid blue
+  li
+    :border 1px solid green
+    +column(8)
+    :margin 0
+    :padding 0
+    .last
+      +column(8)
+
+.row
+  +container
+  +clearfix
+
+#email_form_container
+  +column(24,true)
+  hr
+    +colspacer
+
+#player
+  +column(6)
+  +colborder(red)
+
+#gigs
+  +column(10,true)
+
++sticky-footer(60px, "#container", "#footer_spacer", "#footer")
+#footer
+  ul
+    +column(24)
+    +no-bullets
+    +reset-box-model
+    li
+      +column(6)
+
+      :font-size 13px
+      a
+        +hover-link
+        +link-colors(#bdb4b2,#6f6d52)
+
+    li.last
+      +last

@@ -15,8 +15,10 @@ config.action_controller.allow_forgery_protection    = false
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
 
-config.gem 'cucumber',    :lib => false,        :version => '>=0.3.98' unless File.directory?(File.join(Rails.root, 'vendor/plugins/cucumber'))
-config.gem 'webrat',      :lib => false,        :version => '>=0.5.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/webrat'))
-config.gem 'rspec',       :lib => false,        :version => '>=1.2.6' unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec'))
-config.gem 'rspec-rails', :lib => 'spec/rails', :version => '>=1.2.6' unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
-
+config.gem 'cucumber',    :lib => false,        :version => '>=0.3.104'
+config.gem 'webrat',      :lib => false,        :version => '>=0.5.0'
+config.gem 'rspec',       :lib => false,        :version => '>=1.2.8'
+config.gem 'rspec-rails', :lib => false,        :version => '>=1.2.7.1'
+config.gem 'notahat-machinist', :lib => 'machinist'
+config.gem 'faker'
+config.gem 'langalex-culerity', :lib => 'culerity', :source => 'http://gems.github.com'

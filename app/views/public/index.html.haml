@@ -1,7 +1,8 @@
-= render :partial => "users/new_email_only"
+.row
+  = render :partial => "users/new_email_only"
+.row
+  #player
+    - swf_tag "player", :size => '227x407' do
+      'NO Flash'
 
-#player
-  - swf_tag "player", :size => '227x407' do
-    'NO Flash'
-
-= render :partial => 'gigs/gigs'
+  = render :partial => 'gigs/gigs'

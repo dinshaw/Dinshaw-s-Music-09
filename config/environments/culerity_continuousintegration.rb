@@ -1,28 +1,73 @@
-# Settings specified here will take precedence over those in config/environment.rb
+#
+# -- General configuration
+#
 
-# The production environment is meant for finished, "live" apps.
-# Code is not reloaded between requests
-config.cache_classes = true
+# cucumber =0.3.98 DON NOT CHANGE
+config.gem 'cucumber',    :lib => false,        :version => '=0.3.98'
+config.gem 'webrat',      :lib => false,        :version => '>=0.5.0'
+config.gem 'rspec',       :lib => false,        :version => '>=1.2.6'
+config.gem 'rspec-rails', :lib => false,        :version => '>=1.2.6'
 
-# Full error reports are disabled and caching is turned on
-config.action_controller.consider_all_requests_local = false
+config.gem 'notahat-machinist', :lib => 'machinist'
+config.gem 'faker'
+config.gem 'langalex-culerity', :lib => 'culerity', :source => 'http://gems.github.com'
+
+
+config.cache_classes = false
+config.whiny_nils = true
+config.action_controller.consider_all_requests_local = true
 config.action_controller.perform_caching             = true
-config.action_view.cache_template_loading            = true
+config.cache_store = :mem_cache_store
+config.action_controller.allow_forgery_protection    = false
 
-# See everything in the log (default is :info)
-# config.log_level = :debug
+# Mail
+config.action_mailer.perform_deliveries = false
+config.action_mailer.delivery_method = :test
+config.action_mailer.raise_delivery_errors = true
 
-# Use a different logger for distributed setups
-# config.logger = SyslogLogger.new
+#
+# -- Constants
+#
 
-# Use a different cache store in production
-# config.cache_store = :mem_cache_store
+REQUIRE_SSL = false
+BASE_DOMAIN = `hostname`.chomp.downcase
+AUTHORIZE_IP = '74.217.48.179' # Authorize.Net IP address
 
-# Enable serving of images, stylesheets, and javascripts from an asset server
-# config.action_controller.asset_host = "http://assets.example.com"
+DATA_FILE_STORAGE_OPTIONS = { :storage => :filesystem,
+  :path => ":rails_root/public/upl/test/data_files/:id_partition/:style/:basename.:extension",
+  :url => "/upl/test/data_files/:id_partition/:style/:basename.:extension"}
+HEADSHOT_STORAGE_OPTIONS = { :storage => :filesystem,
+  :path => ":rails_root/public/upl/test/headshots/:id_partition/:style/:basename.:extension",
+  :url => "/upl/test/headshots/:id_partition/:style/:basename.:extension"}
+IMPORT_FILE_STORAGE_OPTIONS = { :storage => :filesystem,
+  :path => ":rails_root/public/upl/test/imports/:id_partition/:style/:basename.:extension",
+  :url => "/upl/test/imports/:id_partition/:style/:basename.:extension"}
+LOGO_STORAGE_OPTIONS = { :storage => :filesystem,
+  :path => ":rails_root/public/upl/test/logos/:id_partition/:style/:basename.:extension",
+  :url => "/upl/test/logos/:id_partition/:style/:basename.:extension"}
+STREAM_MESSAGE_STORAGE_OPTIONS = { :storage => :filesystem,
+  :path => ":rails_root/public/upl/test/stream_messages/:id_partition/:style/:basename.:extension",
+  :url => "/upl/test/stream_messages/:id_partition/:style/:basename.:extension"}
 
-# Disable delivery errors, bad email addresses will be ignored
-# config.action_mailer.raise_delivery_errors = false
+MAILER_HEADERS = {}
+FROM_ADDRESSES = {
+  'default' => "Bantam (test) <system@bantamlive.com>",
+  'notification' => "Bantam (test) <system@bantamlive.com>",
+  'reminder' => "Bantam (test) <system@bantamlive.com>",
+  'signup' => "Bantam (test) <system@bantamlive.com>",
+  'admin' => 'system@bantamlive.com'
+}
 
-# Enable threaded mode
-# config.threadsafe!
+MAIL_FETCHER_OPTIONS = {
+  :batch_size => 100,
+  :delete_on_completion => false,
+  :mailbox => 'INBOX',
+  :overwrite_messages => false,
+  :password => 'r0ckst@r',
+  :protocol => 'imap',
+  :port => '993',
+  :server => 'imap.gmail.com',
+  :username => 'system@bantam360.com'
+}
+
+GOOGLE_ANALYTICS = ''

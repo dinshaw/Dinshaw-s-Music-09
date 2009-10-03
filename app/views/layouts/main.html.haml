@@ -9,29 +9,29 @@
     = javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery?
 
   %body#dinshaw
-    #container.wrap
-      #header
+    #container
+      #header.row
         #nav
           %ul
             %li= link_to "Home", root_path
             %li= link_to "Songs", '/songs'
-            %li= link_to "gigs", '/gigs'
+            %li.last= link_to "gigs", '/gigs'
 
         %h1 dinshaw
+        
       #content
         #flash_block
           - flash.each do |name, msg|
-            = content_tag :div, msg, :id => "flash_#{name}" unless msg.blank?
+            = content_tag :div, msg, :class => "#{name}" unless msg.blank?
 
         = yield
 
       #footer_spacer
-    #footer
-      .wrap
-        %ul
-          %li
-            = link_to "Unsubscribe from the email list", unsubscribe_path
-          %li
-            Two
-          %li.last
-            Three
+    #footer.row
+      %ul
+        %li
+          = link_to "Unsubscribe from the email list", unsubscribe_path
+        %li
+          = link_to "Contact", unsubscribe_path
+        %li.last
+          = link_to "Privacy Policy", unsubscribe_path
