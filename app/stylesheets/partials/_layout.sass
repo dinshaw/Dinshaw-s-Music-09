@@ -1,33 +1,71 @@
 #container
   +container
-  :border 1px solid red
 
+#header
+  h2
+    :float left
+  #social
+    :float right
+    
+.button
+  +button-button
+  +button-colors
+  +button-hover-colors
+  +button-active-colors
+  
 #nav ul
   +column(24)
   +no-bullets
   :margin 0
   :padding 0
-  :border 1px solid blue
+  :background-color #999
+  :margin-bottom 20px
   li
-    :border 1px solid green
+    :text-align center
     +column(8)
     :margin 0
     :padding 0
     .last
       +column(8)
+  
+      
+    a
+      :text-transform uppercase   
+      :color white
+      &:hover
+        :color #000
+        :background-color #fff     
+        :text-decoration none
+   
+
 
 .row
   +container
   +clearfix
 
-#email_form_container
-  +column(24,true)
-  hr
-    +colspacer
+#email_form_container    
+  +container
+  #email_field
+    +column(6)
+    input
+      :margin 0
+      
+  .submit_container
+    +column(2)
+    :margin 0
+    :padding 0
+    .button
+      :margin 0
+    .progress_spinner
+      :display none
+  
+
+hr.spacer
+  +colspacer
 
 #player
   +column(6)
-  +colborder(red)
+  +colborder
 
 #gigs
   +column(10,true)
@@ -44,7 +82,6 @@
       :font-size 13px
       a
         +hover-link
-        +link-colors(#bdb4b2,#6f6d52)
 
     li.last
       +last

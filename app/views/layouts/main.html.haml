@@ -11,12 +11,19 @@
   %body#dinshaw
     #container
       #header.row
+
         #nav
           %ul
             %li= link_to "Home", root_path
             %li= link_to "Songs", '/songs'
             %li.last= link_to "gigs", '/gigs'
 
+
+        #social
+          = link_to image_tag('icons/youtube_32.png'), 'http://www.youtube.com/user/dinshawmusic'
+          = link_to image_tag('icons/facebook_32.png'), 'http://www.facebook.com/pages/Dinshaw/143653234540'
+          = link_to image_tag('icons/twitter_32.png'), 'http://twitter.com/dinshawg'
+          = link_to image_tag('icons/myspace_32.png'), 'http://www.myspace.com/dinshaw'
         %h1 dinshaw
         
       #content

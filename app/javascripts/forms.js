@@ -19,7 +19,7 @@ jQuery.fn.submitWithAjax = function() {
 };
 
 $(function($){//on document ready
-  // hide by default
+  // hide by default just in case the css didn't catch it
   $('.progress_spinner').hide('fast');
   
   $("#email_list_form").submitWithAjax();
