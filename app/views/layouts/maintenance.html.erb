@@ -23,6 +23,11 @@
         </div>
         <h2>Maintenance Notice</h2>
 				<p>We're currently offline for <%= reason ? reason : "a quick udpate" %> as of <%= Time.now.strftime("%I:%M %p %Z") %>.</p>
+				<p>
+          Sorry for the inconvenience. We'll be back 
+          <%= deadline ? "by #{deadline}" : "shortly" %>.
+          Please email us if you need to get in touch.
+        </p>
         <ul>
           <li>
             Booking: 646.239.8325
