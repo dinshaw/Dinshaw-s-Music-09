@@ -5,7 +5,7 @@ class UserMailer < ActionMailer::Base
   def signup_notification(user)
     setup_email(user)
     @subject    += 'Email list confirmation. Important! You must confirm to get emails!'
-    @body[:url]  = "http://#{`hostname`.chomp}/activate/#{user.perishable_token}"
+    @body[:url]  = "http://dinshaw.us/activate/#{user.perishable_token}"
   end
 
 
@@ -14,7 +14,7 @@ class UserMailer < ActionMailer::Base
     from @from
     @subject    += notification.title
     @body[:text]  = notification.body    
-    @body[:url]  = "http://#{`hostname`.chomp}"
+    @body[:url]  = "http://dinshaw.us"
   end
 
 

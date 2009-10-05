@@ -3,5 +3,6 @@
   #body
     = @notification.body
 
-- form_for @notification, :url => send_notification_path(@notification), :method => :post do |f|
-  = f.submit "Send"
+- form_for @notification, :url => deliver_notification_path(@notification), :method => :post do |f|
+  %button.button.submit
+    Deliver

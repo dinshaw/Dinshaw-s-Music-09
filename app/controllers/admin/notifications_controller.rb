@@ -5,6 +5,9 @@ class Admin::NotificationsController < AdminController
       form[:title ].text_area_options = {:rows => 2}
       form[:body ].text_area_options = {:rows => 5}      
     end
+    a.index do |index|
+      index.columns :title, :body, :delivered_at
+    end
     a.show.columns :title, :body
   end
   
