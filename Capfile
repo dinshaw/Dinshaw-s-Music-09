@@ -63,14 +63,6 @@ namespace :deploy do
       put contents, "#{shared_path}/initializers/smtp_gmail.rb"
       inform "Please edit smtp_gmail.rb in the /initializers directory."
     end
-    
-    # Copy site_keys.rb if it doesn't exist.
-    result = run_and_return "ls #{shared_path}/initializers"
-    unless result.match(/site_keys\.rb/)
-      contents = render_erb_template(File.dirname(__FILE__) + "/config/initializers/site_keys.rb.example")
-      put contents, "#{shared_path}/initializers/site_keys.rb"
-      inform "Please edit site_keys.rb in the shared/initializers directory."
-    end
   end
   after "deploy:setup", "deploy:create_shared_config"
   
