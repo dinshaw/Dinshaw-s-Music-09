@@ -18,7 +18,7 @@ Rails::Initializer.run do |config|
   config.gem "friendly_id"
   config.gem 'josevalim-inherited_resources', :lib => 'inherited_resources', :source => 'http://gems.github.com'
   config.gem 'mocha'
-  config.gem 'sprocket'
+  config.gem 'sprockets'
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
