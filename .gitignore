@@ -2,6 +2,7 @@
 webrat*
 log/*
 tmp/**/*
+tmp/restart.txt
 *.swp
 
 public/system
