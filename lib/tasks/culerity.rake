@@ -3,7 +3,7 @@ namespace 'culerity' do
     desc "Starts a rails server for cucumber/culerity tests"
     task :start => :environment do
       port = ENV['PORT'] || 3001
-      environment = 'culerity_development'
+      environment = 'cucumber_enhanced'
       pid_file = RAILS_ROOT + "/tmp/culerity_rails_server.pid"
       if File.exists?(pid_file)
         puts "culerity rails server already running; if not, delete tmp/culerity_rails_server.pid and try again"

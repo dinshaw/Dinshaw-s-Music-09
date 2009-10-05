@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/activate/:perishable_token', :controller => 'users', :action => 'activate', :perishable_token => nil
   # map.register '/register', :controller => 'users', :action => 'create'
   # map.signup '/signup', :controller => 'users', :action => 'new'
-  map.unsubscribe '/unsubscribe', :controller => 'users', :action => 'unsubscribe'
+  map.unsubscribe '/unsubscribe.:format', :controller => 'users', :action => 'unsubscribe', :format => 'html'
 
   map.resources :songs, :recordings, :recording_sessions, :notifications, :gigs, :venues, :addresses
   map.resources :notifications, :member => { :deliver => :post }
@@ -19,6 +19,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :songs, :recordings, :recording_sessions, :notifications, :gigs, :venues, :addresses
   end
 
+  map.privacy 'privacy', :controller => 'public', :action => 'privacy'
+  map.contact 'contact', :controller => 'public', :action => 'contact'  
   SprocketsApplication.routes(map)
 
   map.connect ':controller/:action/:id'

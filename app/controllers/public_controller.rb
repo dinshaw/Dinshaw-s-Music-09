@@ -3,5 +3,4 @@ class PublicController < ApplicationController
   def index
     @gigs = Gig.upcoming
   end
-
 end

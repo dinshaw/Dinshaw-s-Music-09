@@ -1,8 +1,13 @@
 .row
   = render :partial => "users/new_email_only"
+
+#welcome.row
+  %h2 Welcome...
+  %p I'm just pulling the new site together. Focusing on the functionality first, then I will give it some love in the design department.
+  
 .row
   #player
     - swf_tag "player", :size => '227x407' do
-      'NO Flash'
+      %p.error You need flash and Javascript to see the player.
 
   = render :partial => 'gigs/gigs'

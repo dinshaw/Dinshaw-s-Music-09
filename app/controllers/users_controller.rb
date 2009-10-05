@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   ensure
     redirect_back_or_default('/')
   end
-  
+
   def new
     @user = User.new
   end
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     # set a flag for the emial list
     @email_list = params[:email_list]    
-    
+
     if @user.save
       flash[:message] = I18n.t('flash.user.create.success')
       # pass email to DelayedJob
@@ -50,6 +50,26 @@ class UsersController < ApplicationController
       redirect_to account_url
     else
       render :action => :edit
+    end
+  end
+
+  def unsubscribe
+    if request.post?
+      @user = User.find_by_email(params[:user][:email])
+      if @user
+        @user.destroy
+        flash[:success] = "Your email has been removed."
+        respond_to do |format|
+          format.html { redirect_to root_url }
+          format.js { render :action => :unsubscribe_success }
+        end
+      else
+        flash[:error] = "Email address not found: #{params[:user][:email]}."
+        respond_to do |format|
+          format.html
+          format.js
+        end
+      end
     end
   end
 end

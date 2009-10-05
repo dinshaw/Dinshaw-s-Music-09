@@ -7,20 +7,19 @@ module NavigationHelpers
   #
   def path_to(page_name)
     case page_name
-    
+
     when /the homepage/
       '/'
     when /the signup page/
       signup_path
-      
     when /the unsubscribe page/
-      unsubscribe_path
+      '/unsubscribe'
     when /the gigs page/
-      gigs_path            
+      gigs_path
 
     when /^(.*)'s song page$/i
       song_path(Song.find_by_title($1))
-  
+
     # Add more mappings here.
     # Here is a more fancy example:
     #

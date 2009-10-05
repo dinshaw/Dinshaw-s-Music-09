@@ -14,9 +14,9 @@ class GigHelperTest < ActiveSupport::TestCase
       assert_equal [@time.strftime(GIG_TIME_FORMAT), 'to', (@time + 2.hours).strftime(GIG_END_TIME_FORMAT)].join(" "),  show_time(@gig)
     end
 
-
     should 'format the time with just end' do
       assert_equal show_time(@gig, :end => false), @time.strftime(GIG_TIME_FORMAT)
     end
+    
   end
 end
