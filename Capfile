@@ -36,7 +36,7 @@ end
 
 desc "Create mod_rails restart file"
 task :mod_rails_restart, :roles => :app do
-    run "touch #{release_path}/tmp/restart.txt"
+  run "touch #{release_path}/tmp/restart.txt"
 end
 after "deploy:update_code", "mod_rails_restart"
 
@@ -56,7 +56,7 @@ namespace :deploy do
       put contents, "#{shared_path}/config/database.yml"
       inform "Please edit database.yml in the shared directory."
     end
-    
+
     # Copy smtp_gmail.rb if it doesn't exist.
     unless result.match(/smtp_gmail\.rb/)
       contents = render_erb_template(File.dirname(__FILE__) + "/config/initializers/smtp_gmail.rb.example")
@@ -65,7 +65,7 @@ namespace :deploy do
     end
   end
   after "deploy:setup", "deploy:create_shared_config"
-  
+
   # after:update_code
   desc "Copy all config files from shared to release"
   task :copy_config_files do
@@ -80,7 +80,7 @@ namespace :deploy do
     run "ln -s  #{shared_path}/public/system #{release_path}/public/system"        
   end
   after "deploy:update_code", "deploy:make_sym_links_for_user_content"
-  
+
   # create custom maintenence page
   namespace :web do
     desc "Serve up a custom maintenance page."
@@ -94,31 +94,32 @@ namespace :deploy do
       put page, "#{shared_path}/system/maintenance.html", :mode => "0755"
     end
   end
-  
+
   desc "Reindex and restart sphinx"
   task :sphinx_in do
     run "cd #{release_path}; rake ts:rebuild RAILS_ENV=#{rails_env}"     
   end
   # after "deploy:update_code", "deploy:sphinx_in"
-  
+
   before "deploy:update_code", 'deploy:web:disable'
   after "deploy:restart", 'deploy:web:enable'
-  
-  namespace :delayed_job do
-    desc "Stop the delayed_job process"
-    task :stop, :roles => :app do
-      run "cd #{current_path} && RAILS_ENV=#{rails_env} script/delayed_job stop"
-    end
-    desc "Start the delayed_job process"
-    task :start, :roles => :app do
-      run "cd #{current_path} && RAILS_ENV=#{rails_env} script/delayed_job start"
-    end
-    desc "Restart the delayed_job process"
-    task :restart, :roles => :app do
-      run "cd #{current_path} && RAILS_ENV=#{rails_env} script/delayed_job restart"
-    end
-  end
-  after "deploy:stop",    "delayed_job:stop"
-  after "deploy:start",   "delayed_job:start"
-  after "deploy:restart", "delayed_job:restart"
 end
+
+namespace :delayed_job do
+  desc "Stop the delayed_job process"
+  task :stop, :roles => :app do
+    run "cd #{current_path} && RAILS_ENV=#{rails_env} script/delayed_job stop"
+  end
+  desc "Start the delayed_job process"
+  task :start, :roles => :app do
+    run "cd #{current_path} && RAILS_ENV=#{rails_env} script/delayed_job start"
+  end
+  desc "Restart the delayed_job process"
+  task :restart, :roles => :app do
+    run "cd #{current_path} && RAILS_ENV=#{rails_env} script/delayed_job restart"
+  end
+end
+
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"
