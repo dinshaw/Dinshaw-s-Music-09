@@ -103,6 +103,23 @@ namespace :deploy do
 
   before "deploy:update_code", 'deploy:web:disable'
   after "deploy:restart", 'deploy:web:enable'
+  
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && whenever --write-crontab"
+  end
+  after "deploy:symlink", "deploy:update_crontab"
+  
+  # 
+  desc "Install monitor scripts"
+  task :install_monitors do
+    run "cp #{release_path}/lib/delayed_job_monitor.sh ~/"
+    run "chmod 755 ~/delayed_job_monitor.sh"    
+    run "cp #{release_path}/lib/ar_mailer_monitor.sh ~/"
+    run "chmod 755 ~/ar_mailer_monitor.sh"
+  end
+  after "deploy:update_code", "deploy:install_monitors"
+  
 end
 
 namespace :delayed_job do
@@ -123,3 +140,4 @@ end
 after "deploy:stop",    "delayed_job:stop"
 after "deploy:start",   "delayed_job:start"
 after "deploy:restart", "delayed_job:restart"
+

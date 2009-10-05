@@ -5,9 +5,10 @@ en:
   flash:
     user:
       create:
-        success: You rock! You are signed up. You should have a confirmation email in your INBOX or spam folder. You have to clck the link in ot before you will start receiving emails.
+        success: You rock! You are signed up. You should have a confirmation email in your INBOX or spam folder. You have to clck the link in it before you will start receiving emails.
       activate:
-        not_found: Email list activation faild. ake sure the link is right. It should look like http://dinshaw.us/activate/some-crazy-code-here. If you are still having problems, send me an email
+        not_found: Email list activation faild. Make sure the link is right. It should look like http://dinshaw.us/activate/some-crazy-code-here. If you are still having problems, send me an email
+        success: You rock again! Your email is confirmed. I will be in touch.
         
   authlogic:
     error_messages:

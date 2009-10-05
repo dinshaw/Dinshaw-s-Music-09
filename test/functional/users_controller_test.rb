@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   context 'routing' do
-    should_route :post, "/unsubscribe", :action => :unsubscribe
+    should_route :post, "/unsubscribe.js", :action => 'unsubscribe'
   end
 
   context 'with get not fail' do
@@ -33,6 +33,17 @@ class UsersControllerTest < ActionController::TestCase
     should_change("User count", :by => 0) { User.count }
   end
 
+  context 'on activation' do
+    setup do
+      @user = User.make
+      @user.expects(:activate!)
+      get :activate, :perishable_token => @user.perishable_token
+    end
+    
+    should_respond_with :redirect
+    should_set_the_flash_to /You rock again/
+  end
+  
   context "unsubscribing" do
     setup do
       @user = User.make(:email => 'test@tester.com')
