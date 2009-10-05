@@ -99,7 +99,7 @@ namespace :deploy do
   task :sphinx_in do
     run "cd #{release_path}; rake ts:rebuild RAILS_ENV=#{rails_env}"     
   end
-  after "deploy:update_code", "deploy:sphinx_in"
+  # after "deploy:update_code", "deploy:sphinx_in"
   
   before "deploy:update_code", 'deploy:web:disable'
   after "deploy:restart", 'deploy:web:enable'
