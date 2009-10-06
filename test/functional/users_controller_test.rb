@@ -2,21 +2,20 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   context 'routing' do
-    should_route :post, "/unsubscribe.js", :action => 'unsubscribe'
+    # should_route :post, "/unsubscribe", :action => 'unsubscribe'
   end
 
   context 'with get not fail' do
     setup do
       get :unsubscribe
     end
-    should_respond_with :success=
+    should_respond_with :success
   end
   
   context "on create user" do
     setup do
       post :create, "user" => User.plan
     end
-
     should_assign_to :user
     should_respond_with :redirect
     should_change("User count", :by => 1) { User.count }
@@ -26,7 +25,6 @@ class UsersControllerTest < ActionController::TestCase
     setup do
       post :create, "user" => User.plan(:password => 'badpass')
     end
-
     should_assign_to :user
     should_respond_with :success
     should_render_template :new
