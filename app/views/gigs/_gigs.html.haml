@@ -13,10 +13,14 @@
       - if defined?(full)
         %p 
           = gig.venue.location
-        %p 
-          = full_address(gig.venue.address)
-        %p 
-          = gig.venue.directions
+
+        - if !gig.venue.address.nil?
+          %p 
+            = full_address(gig.venue.address)
+
+        - if !gig.venue.directions.blank?            
+          %p 
+            = gig.venue.directions
     
 
 
