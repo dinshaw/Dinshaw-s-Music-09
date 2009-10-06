@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   rescue ActiveRecord::RecordNotFound
     flash[:error] = I18n.t('flash.user.activate.not_found')
   ensure
-    flash[:error] = I18n.t('flash.user.activate.success')    
+    flash[:success] = I18n.t('flash.user.activate.success')    
     redirect_back_or_default('/')
   end
 
