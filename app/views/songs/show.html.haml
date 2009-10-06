@@ -1,11 +1,14 @@
 #song
   %h2
     = @song.title
+    %span.header-note
+      = link_to "recordings (#{@song.recordings.count})", recordings_path
+    
 
   #recordings
-    %p
-      = "Recordings (#{@song.recordings.count})"
-
+    %h4.close-bottom
+      Notes:
+    
     = textilize @song.notes
 
     %ul
@@ -16,6 +19,7 @@
           = recording.recording_session.start_date
 
   #lyrics
+    %h4.close-bottom Lyrics:
     =textilize @song.lyrics
   
 
