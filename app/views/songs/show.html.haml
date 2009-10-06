@@ -1,18 +1,22 @@
 #song
-  %h1 
+  %h2
     = @song.title
-    
+
   #recordings
-    %h2 
+    %p
       = "Recordings (#{@song.recordings.count})"
-    
+
+    = textilize @song.notes
+
     %ul
       - @song.recordings.each do |recording|
         %li
           = link_to recording.recording_session.title, recording.recording_session
           ,
           = recording.recording_session.start_date
-      
-    
-    
+
+  #lyrics
+    =textilize @song.lyrics
   
+
+

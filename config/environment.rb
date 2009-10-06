@@ -20,12 +20,13 @@ Rails::Initializer.run do |config|
   config.gem 'mocha'
   config.gem 'sprockets'
   config.gem 'javan-whenever', :lib => false, :source => 'http://gems.github.com'
+  config.gem "RedCloth", :version => ">= 4.2.2", :source => "http://code.whytheluckystiff.net"
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.
 
   # Add additional load paths for your own custom dirs
-  config.load_paths += %W( #{RAILS_ROOT}/admin #{RAILS_ROOT}/vendor/gems/RedCloth-4.1.9/ext/redcloth_scan)
+  config.load_paths += %W( #{RAILS_ROOT}/admin #{RAILS_ROOT}/vendor/gems/RedCloth-4.2.2/ext/redcloth_scan)
   
   # Activate observers that should always be running
   # config.active_record.observers = :user_observer
