@@ -34,12 +34,12 @@ class Capistrano::Configuration
 
 end
 
-desc "Create mod_rails restart file"
-task :restart, :roles => :app do
-  run "touch #{release_path}/tmp/restart.txt"
-end
-
 namespace :deploy do
+  desc "Create mod_rails restart file"
+  task :restart, :roles => :app do
+    run "touch #{release_path}/tmp/restart.txt"
+  end
+  
   #  SETUP tasks
   desc "Create shared/config directories and config files."
   task :create_shared_config do
