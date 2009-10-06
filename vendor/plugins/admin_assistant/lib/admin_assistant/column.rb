@@ -1,13 +1,5 @@
 class AdminAssistant
-  class Column
-    def blank?(search)
-      search.params["#{name}(blank)"] == '1'
-    end
-
-    def comparator(search)
-      search.params["#{name}(comparator)"]
-    end
-    
+  class Column    
     def form_view(action_view, admin_assistant, opts = {})
       view 'FormView', action_view, admin_assistant, opts
     end
@@ -135,14 +127,6 @@ class AdminAssistant
         "sort #{sort_order}" if sort_order
       end
       
-      def td_css_class
-        'sort' if sort_order
-      end
-      
-      def unconfigured_html(record)
-        @action_view.send(:h, string(record))
-      end
-      
       def html(record)
         html_for_index_method = "#{name}_html_for_index"
         html = if @action_view.respond_to?(html_for_index_method)
@@ -181,7 +165,16 @@ class AdminAssistant
         @link_to_args = setting.link_to_args
         @sort_order = index.sort_order if name == index.sort
         @image_size = setting.image_size
-        @ajax_toggle_allowed = admin_assistant.update?
+        @ajax_toggle_allowed =
+            admin_assistant.update? && setting.ajax_toggle != false
+      end
+      
+      def td_css_class
+        'sort' if sort_order
+      end
+      
+      def unconfigured_html(record)
+        @action_view.send(:h, string(record))
       end
     end
     
@@ -201,7 +194,7 @@ class AdminAssistant
       
       def blank_checkbox_html(form)
         check_box_and_hidden_tags(
-          "search[#{name}(blank)]", @column.blank?(form.object)
+          "search[#{name}(blank)]", form.object.blank?(@column.name)
         ) + "is blank"
       end
       
@@ -218,7 +211,7 @@ class AdminAssistant
       end
       
       def comparator_html(search)
-        selected_comparator = @column.comparator(search) || '='
+        selected_comparator = search.comparator(@column.name) || '='
         option_tags = comparator_opts.map { |text, value|
           opt = "<option value=\"#{value}\""
           if selected_comparator == value
@@ -243,6 +236,13 @@ class AdminAssistant
         input = ''
         if @column.field_type == :boolean
           input = boolean_input form
+        elsif @column.field_type == :datetime
+          input << comparator_html(form.object) << ' ' if @comparators == :all
+          input << form.datetime_select(name, :include_blank => true)
+          input << @action_view.send(
+            :link_to_function, 'Clear',
+            "AdminAssistant.clear_datetime_select('search_#{name.underscore}')"
+          )
         else
           if @column.field_type == :integer && @comparators == :all
             input << comparator_html(form.object) << ' '
@@ -256,7 +256,7 @@ class AdminAssistant
     
     module ShowViewMethods
       def html(record)
-        @action_view.send(:h, value(record))
+        @action_view.send(:h, string(record))
       end
     end
 
@@ -268,6 +268,7 @@ class AdminAssistant
         @model_class = admin_assistant.model_class
         base_setting = admin_assistant[name]
         @boolean_labels = base_setting.boolean_labels
+        @strftime_format = base_setting.strftime_format
         fem_name = name + '_exists?'
         if @action_view.respond_to?(fem_name)
           @file_exists_method = @action_view.method(fem_name)
@@ -322,6 +323,8 @@ class AdminAssistant
           value = value(record)
           if @boolean_labels
             value ? @boolean_labels.first : @boolean_labels.last
+          elsif value.respond_to?(:strftime) && @strftime_format
+            value.strftime @strftime_format
           else
             value.to_s
           end

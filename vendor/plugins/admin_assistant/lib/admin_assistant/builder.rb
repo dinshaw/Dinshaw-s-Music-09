@@ -148,7 +148,7 @@ class AdminAssistant
     
     def column_config_fields
       {:boolean_labels => :accessor, :label => :accessor,
-       :polymorphic_types => :accessor}
+       :polymorphic_types => :accessor, :strftime_format => :accessor}
     end
   end
   
@@ -215,9 +215,13 @@ class AdminAssistant
       @per_page = 25
     end
     
+    def cache_total_entries(time_span = nil)
+      time_span ? (@cache_total_entries = time_span) : @cache_total_entries
+    end
+    
     def column_config_fields
-      {:image_size => :accessor, :link_to_args => :block,
-       :sort_by => :accessor}
+      {:ajax_toggle => :accessor, :image_size => :accessor,
+       :link_to_args => :block, :sort_by => :accessor}
     end
     
     def conditions(str = nil, &block)

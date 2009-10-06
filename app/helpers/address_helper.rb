@@ -1,4 +1,6 @@
 module AddressHelper
+
+  
   def full_address(address)
     [
       address.street, 

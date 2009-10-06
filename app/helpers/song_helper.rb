@@ -4,5 +4,4 @@ module SongHelper
       link_to r.recording_session.title, admin_recording_path(r)
     end.to_sentence
   end
-
 end

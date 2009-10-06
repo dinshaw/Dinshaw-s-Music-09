@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include AASM
+  has_many :addresses, :as => :addressable
   
   acts_as_authentic do |c|
     c.login_field = :email
