@@ -35,10 +35,9 @@ class Capistrano::Configuration
 end
 
 desc "Create mod_rails restart file"
-task :mod_rails_restart, :roles => :app do
+task :restart, :roles => :app do
   run "touch #{release_path}/tmp/restart.txt"
 end
-after "deploy:update_code", "mod_rails_restart"
 
 namespace :deploy do
   #  SETUP tasks
