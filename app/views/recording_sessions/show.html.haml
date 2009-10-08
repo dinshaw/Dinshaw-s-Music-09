@@ -1,0 +1,14 @@
+%h2
+  Recording Session:
+  %strong
+    = @recording_session.title
+%p
+  = @recording_session.start_date 
+  to 
+  = @recording_session.end_date
+  
+=textilize @recording_session.description
+
+- unless @recording_session.recordings.blank?
+  = render :partial => 'recordings/recordings', :locals => { :recordings => @recording_session.recordings, :showing => 'recording_session' }
+

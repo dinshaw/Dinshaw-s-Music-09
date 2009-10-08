@@ -1,0 +1,17 @@
+#recordings
+  %h4 Recordings
+  %ul
+    - recordings.each do |recording|
+      %li
+        - case showing
+        - when 'song'
+          = link_to recording.recording_session.title, recording.recording_session
+          ,
+          = recording.recording_session.start_date.strftime("%x")
+        - when 'recording_session'
+          = link_to recording.song.title, recording.song
+          ,
+          = recording.song.composition_date.strftime("%x")
+      
+      %li
+        %embed{:src => '/system/tracks/1/original/Amy_Winehouse_-_Tears_Dry_On_Their_Own.mp3',  :autostart => 'false',  :loop => 'false', :volume => 100 }

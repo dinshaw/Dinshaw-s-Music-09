@@ -7,5 +7,3 @@ Feature: Song
     Then I should see "recordings (2)"
     When I click "Good Song"
     Then I should be on "Good Song's song page"
-    
-    Then I should see "Recordings (2)"
