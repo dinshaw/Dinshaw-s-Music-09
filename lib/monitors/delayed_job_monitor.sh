@@ -24,11 +24,4 @@ if [ $TEST = 0 ]
     echo "A restart was attempted automatically."  >> /home/dinshaw1/dinshaw.us/current/log/delayed_job.log
     send_mail
   }
-else
-  {
-    echo "------------------------------------" >> /home/dinshaw1/dinshaw.us/current/log/delayed_job.log
-    echo "Your  Delayed_job is running fine..." >> /home/dinshaw1/dinshaw.us/current/log/delayed_job.log
-    echo "------------------------------------" >> /home/dinshaw1/dinshaw.us/current/log/delayed_job.log
-    send_mail
-  }
 fi

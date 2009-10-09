@@ -23,11 +23,4 @@ if [ $TEST = 0 ]
     echo "A restart was attempted automatically."  >> /home/dinshaw1/dinshaw.us/current/log/ar_mailer.log
     send_mail
   }
-else
-  {
-    echo "------------------------------------" >> /home/dinshaw1/dinshaw.us/current/log/ar_mailer.log
-    echo "Your AR Mailer is running fine..." >> /home/dinshaw1/dinshaw.us/current/log/ar_mailer.log
-    echo "------------------------------------" >> /home/dinshaw1/dinshaw.us/current/log/ar_mailer.log
-    send_mail
-  }
 fi
