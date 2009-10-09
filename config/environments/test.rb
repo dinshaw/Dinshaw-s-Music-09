@@ -2,7 +2,9 @@ config.gem "thoughtbot-shoulda", :lib => "shoulda", :source => "http://gems.gith
 config.gem 'cucumber'
 config.gem 'notahat-machinist', :lib => 'machinist'
 config.gem 'faker'
-
+require 'test/unit' # add this line 
+config.gem 'thoughtbot-shoulda', :lib => 'shoulda'
+config.gem 'mocha'
 
 # The test environment is used exclusively to run your application's
 # test suite.  You never need to work with it otherwise.  Remember that

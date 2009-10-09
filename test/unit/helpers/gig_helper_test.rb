@@ -6,8 +6,8 @@ class GigHelperTest < ActiveSupport::TestCase
     setup do
       @time = Time.now
       @gig = Gig.new
-      @gig.expects(:time_start).returns(@time)
-      @gig.expects(:time_end).returns(@time+2.hours)      
+      @gig.stubs(:time_start).returns(@time)
+      @gig.stubs(:time_end).returns(@time+2.hours)      
     end
 
     should 'format the time with start and end' do
@@ -17,6 +17,5 @@ class GigHelperTest < ActiveSupport::TestCase
     should 'format the time with just end' do
       assert_equal show_time(@gig, :end => false), @time.strftime(GIG_TIME_FORMAT)
     end
-    
   end
 end

@@ -11,7 +11,7 @@ class UsersControllerTest < ActionController::TestCase
     end
     should_respond_with :success
   end
-  
+
   context "on create user" do
     setup do
       post :create, "user" => User.plan
@@ -31,22 +31,29 @@ class UsersControllerTest < ActionController::TestCase
     should_change("User count", :by => 0) { User.count }
   end
 
-  context 'on activation' do
+  context "on activation" do
     setup do
       @user = User.make
-      @user.expects(:activate!)
-      get :activate, :perishable_token => @user.perishable_token
+      User.stubs(:find_using_perishable_token!).returns(@user)
     end
-    
-    should_respond_with :redirect
-    should_set_the_flash_to /You rock again/
+
+    context "on GET" do
+      setup { get :activate, :perishable_token => @user.perishable_token }
+
+      should_respond_with :redirect
+      should_set_the_flash_to /You rock again/
+
+      # runs before "get :index"
+      before_should "find all users" do
+        @user.expects(:activate!)
+      end
+    end
   end
-  
+
   context "unsubscribing" do
     setup do
       @user = User.make(:email => 'test@tester.com')
     end
-
     context 'with no email' do
       setup do
         post :unsubscribe, "user" => { :email => '' }

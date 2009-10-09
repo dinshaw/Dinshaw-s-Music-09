@@ -3,6 +3,12 @@
   #body
     = @notification.body
 
-- form_for @notification, :url => deliver_notification_path(@notification), :method => :post do |f|
-  %button.button.submit
-    Deliver
+- if @notification.delivered_at.nil?
+  - form_for @notification, :url => deliver_notification_path(@notification), :method => :post do |f|
+    %button.button.submit
+      Deliver
+- else
+  %p
+    Delivered at
+    = @notification.delivered_at.
+  

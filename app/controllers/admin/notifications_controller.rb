@@ -19,4 +19,8 @@ class Admin::NotificationsController < AdminController
     Delayed::Job.enqueue( MailingJob.new(params[:notification_id]), -3 ) 
     flash[:message] = 'Notifications being sent...'
   end
+  
+  def get_gig
+    @gig = Gig.find(params[:gig_id])
+  end
 end

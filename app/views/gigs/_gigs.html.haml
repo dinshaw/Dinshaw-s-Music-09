@@ -1,27 +1,6 @@
 #gigs
   %h2 Gigs
-  - @gigs.each do |gig| 
-    .gig
-      %h3
-        %strong
-          = link_to gig.venue.name, gigs_path
-        /
-        = show_time(gig)
-      %p 
-        = gig.description
-      
-      - if defined?(full)
-        %p 
-          = gig.venue.location
-
-        - if !gig.venue.address.nil?
-          %p 
-            = full_address(gig.venue.address)
-
-        - if !gig.venue.directions.blank?            
-          %p 
-            = gig.venue.directions
-    
+  = render :partial => 'gigs/gig', :collection => @gigs, :locals => { :full => true }
 
 
   
