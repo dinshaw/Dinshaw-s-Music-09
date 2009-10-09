@@ -112,9 +112,9 @@ namespace :deploy do
   # 
   desc "Install monitor scripts"
   task :install_monitors do
-    run "cp #{release_path}/lib/delayed_job_monitor.sh ~/"
+    run "cp #{release_path}/lib/monitors/delayed_job_monitor.sh ~/"
     run "chmod 755 ~/delayed_job_monitor.sh"    
-    run "cp #{release_path}/lib/ar_mailer_monitor.sh ~/"
+    run "cp #{release_path}/lib/monitors/ar_mailer_monitor.sh ~/"
     run "chmod 755 ~/ar_mailer_monitor.sh"
   end
   after "deploy:update_code", "deploy:install_monitors"
