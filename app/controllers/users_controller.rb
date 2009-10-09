@@ -4,10 +4,10 @@ class UsersController < ApplicationController
 
   def activate
     User.find_using_perishable_token!(params[:perishable_token]).activate!
+    flash[:success] = I18n.t('flash.user.activate.success')
   rescue ActiveRecord::RecordNotFound
     flash[:error] = I18n.t('flash.user.activate.not_found')
   ensure
-    flash[:success] = I18n.t('flash.user.activate.success')    
     redirect_back_or_default('/')
   end
 
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     # set a flag for the emial list
-    @email_list = params[:email_list]    
+    @email_list = params[:email_list]
 
     if @user.save
       flash[:message] = I18n.t('flash.user.create.success')
