@@ -20,6 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 
 every 5.minutes do
-  command '/bin/sh /home/dinshaw1/ar_mailer_monitor.sh'
-  command '/bin/sh /home/dinshaw1/delayed_job_monitor.sh'
+  command '/bin/bash /home/dinshaw1/ar_mailer_monitor.sh'
+  command '/bin/bash /home/dinshaw1/delayed_job_monitor.sh'
 end

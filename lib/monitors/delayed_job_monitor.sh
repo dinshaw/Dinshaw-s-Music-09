@@ -17,8 +17,7 @@ TEST=`ps ax | grep delayed_job | grep -v grep | wc -l`
 if [ $TEST = 0 ]
   then
   {
-    cd /home/dinshaw1/dinshaw.us/current/
-    /usr/local/bin/ruby RAILS_ENV=production script/delayed_job start
+    /usr/local/bin/ruby /home/dinshaw1/dinshaw.us/current/script/delayed_job start -e production
     echo "Your Delayed_job was found down at `date '+DATE: %m/%d/%y   TIME:%H:%M:%S'`" >> /home/dinshaw1/dinshaw.us/current/log/delayed_job.log
     echo "A restart was attempted automatically."  >> /home/dinshaw1/dinshaw.us/current/log/delayed_job.log
     send_mail
