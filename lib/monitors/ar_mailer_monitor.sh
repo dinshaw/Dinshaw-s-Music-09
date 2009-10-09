@@ -13,7 +13,7 @@ send_mail()
   rm -f $MAIL_BODY
 }
 
-i=`ps aux | grep ar_mailer |grep  -v "grep" | wc -l`
+i=`ps | grep ar_mailer |grep  -v "grep" | wc -l`
 if [ $i -eq 0 ]
   then
   {
