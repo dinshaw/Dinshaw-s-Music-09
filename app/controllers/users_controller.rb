@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :require_user, :only => [:show, :edit, :update]
 
   def activate
-    User.find_using_perishable_token!(params[:perishable_token]).activate!
+    User.find_using_perishable_token!(params[:perishable_token], 1.year).activate!
     flash[:success] = I18n.t('flash.user.activate.success')
   rescue ActiveRecord::RecordNotFound
     flash[:error] = I18n.t('flash.user.activate.not_found')

@@ -103,14 +103,12 @@ namespace :deploy do
   before "deploy:update_code", 'deploy:web:disable'
   after "deploy:restart", 'deploy:web:enable'
   
-  after "deploy:symlink", "deploy:update_crontab"
-  namespace :deploy do
-    desc "Update the crontab file"
-    task :update_crontab, :roles => :db do
-      run "cd #{release_path} && whenever --update-crontab #{application}"
-    end
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && whenever --update-crontab #{application}"
   end
-  # 
+  after "deploy:symlink", "deploy:update_crontab"
+
   desc "Install monitor scripts"
   task :install_monitors do
     run "cp #{release_path}/lib/monitors/delayed_job_monitor.sh ~/"
