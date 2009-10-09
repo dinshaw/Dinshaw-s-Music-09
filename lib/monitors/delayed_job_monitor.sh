@@ -13,8 +13,9 @@ send_mail()
   rm -f $MAIL_BODY
 }
 
-i=`ps | grep delayed_job |grep  -v "grep" | wc -l`
-if [ $i -eq 0 ]
+TEST=`ps ax | grep delayed_job | grep -v grep | wc -l`
+# echo $TEST
+if [ $TEST = 0 ]
   then
   {
     cd /home/dinshaw1/dinshaw.us/current/
