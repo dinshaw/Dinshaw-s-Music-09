@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
   
   def signup_notification(user)
     setup_email(user)
-    @subject    += 'Email list confirmation. Important! You must confirm to get emails!'
+    @subject    += 'Email list activation'
     @body[:url]  = "http://dinshaw.us/activate/#{user.perishable_token}"
   end
 
