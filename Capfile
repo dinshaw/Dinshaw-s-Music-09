@@ -94,10 +94,10 @@ namespace :deploy do
     end
   end
 
-  desc "Reindex and restart sphinx"
-  task :sphinx_in do
-    run "cd #{release_path}; rake ts:rebuild RAILS_ENV=#{rails_env}"     
-  end
+  # desc "Reindex and restart sphinx"
+  # task :sphinx_in do
+  #   run "cd #{release_path}; rake ts:rebuild RAILS_ENV=#{rails_env}"     
+  # end
   # after "deploy:update_code", "deploy:sphinx_in"
 
   before "deploy:update_code", 'deploy:web:disable'
