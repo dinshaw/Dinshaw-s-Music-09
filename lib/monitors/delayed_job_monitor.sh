@@ -13,7 +13,7 @@ send_mail()
   rm -f $MAIL_BODY
 }
 
-TEST=`ps ax | grep delayed_job | grep -v grep | wc -l`
+TEST=`ps ax | grep delayed_job | grep -v grep | grep -v delayed_job_monitor | wc -l`
 if [ $TEST = 0 ]
   then
   {

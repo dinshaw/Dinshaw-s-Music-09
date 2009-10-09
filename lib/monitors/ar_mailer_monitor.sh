@@ -13,7 +13,7 @@ send_mail()
   rm -f $MAIL_BODY
 }
 
-TEST=`ps ax | grep ar_sendmail | grep -v grep | wc -l`
+TEST=`ps ax | grep ar_sendmail | grep dinshaw1 | grep -v ar_mailer_monitor | grep -v grep | wc -l`
 if [ $TEST = 0 ]
   then
   {
