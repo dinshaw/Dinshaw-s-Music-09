@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #Give the email address(es) to which the script will have to send the alerts
 MAIL_TO=info@dinshaw.us
@@ -13,8 +13,7 @@ send_mail()
   rm -f $MAIL_BODY
 }
 
-TEST=`ps | grep ar_sendmail | grep -v grep | wc -l`
-# echo $TEST
+TEST=`ps ax | grep ar_sendmail | grep -v grep | wc -l`
 if [ $TEST = 0 ]
   then
   {
