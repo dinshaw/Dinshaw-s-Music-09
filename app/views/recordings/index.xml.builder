@@ -7,6 +7,7 @@ xml.songs do
       xml.artist 'Dinshaw'
       xml.album 'Dinshaw'
       xml.url recording.track.url
+      xml.recording_session recording.recording_session.title
     end
   end
 end
