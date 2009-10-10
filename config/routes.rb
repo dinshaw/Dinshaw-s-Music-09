@@ -12,9 +12,12 @@ ActionController::Routing::Routes.draw do |map|
   # map.signup '/signup', :controller => 'users', :action => 'new'
   map.unsubscribe '/unsubscribe.:format', :controller => 'users', :action => 'unsubscribe', :format => 'html'
 
-  # map.namespace :admin do |admin|
-  #   admin.resources :songs, :recordings, :recording_sessions, :notifications, :gigs, :venues, :addresses, :users
-  # end
+  # needed for shared host messing up routes
+  map.connect '/admin/recordings/autocomplete_song', :controller => 'admin/recordings', :action => 'autocomplete_song'
+  
+  map.namespace :admin do |admin|
+    admin.resources :songs, :recordings, :recording_sessions, :notifications, :gigs, :venues, :addresses, :users
+  end
   
   map.resources :songs, :recordings, :recording_sessions, :notifications, :gigs, :venues, :addresses
   map.resources :notifications, :member => { :deliver => :post }

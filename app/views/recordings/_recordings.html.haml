@@ -14,4 +14,4 @@
           = recording.song.composition_date.strftime("%x")
       
       %li
-        %embed{:src => '/system/tracks/1/original/Amy_Winehouse_-_Tears_Dry_On_Their_Own.mp3',  :autostart => 'false',  :loop => 'false', :volume => 100 }
+        %embed{:src => recording.track.url,  :autostart => 'false',  :loop => 'false', :volume => 100 }
