@@ -12,13 +12,12 @@ ActionController::Routing::Routes.draw do |map|
   # map.signup '/signup', :controller => 'users', :action => 'new'
   map.unsubscribe '/unsubscribe.:format', :controller => 'users', :action => 'unsubscribe', :format => 'html'
 
+  # map.namespace :admin do |admin|
+  #   admin.resources :songs, :recordings, :recording_sessions, :notifications, :gigs, :venues, :addresses, :users
+  # end
+  
   map.resources :songs, :recordings, :recording_sessions, :notifications, :gigs, :venues, :addresses
   map.resources :notifications, :member => { :deliver => :post }
-  
-  map.namespace :admin do |admin|
-    admin.resources :songs, :recordings, :recording_sessions, :notifications, :gigs, :venues, :addresses, :users
-  end
-
   map.privacy 'privacy', :controller => 'public', :action => 'privacy'
   map.contact 'contact', :controller => 'public', :action => 'contact'  
   SprocketsApplication.routes(map)
