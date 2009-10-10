@@ -19,7 +19,7 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 5.minutes do
+every 10.minutes do
   command '/bin/bash /home/dinshaw1/ar_mailer_monitor.sh'
-  command '/bin/bash /home/dinshaw1/delayed_job_monitor.sh'
+  command 'RAILS_ENV=production /bin/bash /home/dinshaw1/delayed_job_monitor.sh'
 end
