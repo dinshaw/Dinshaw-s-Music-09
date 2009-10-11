@@ -1,13 +1,15 @@
 #songs
   %h2 Songs
-  %table 
+  %table
     %thead
       %tr
         %th Title
-        %th Recordings?
+        %th Recordings
+        %th Comments
     %tbody
       - @songs.each do |song|
         %tr{ :class => cycle('even','odd') }
           %td= link_to song.title, song
           %td= link_to song.recordings.count, song
-    
+          %td= link_to song.comments.count, song
+
