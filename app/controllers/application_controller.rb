@@ -30,7 +30,11 @@ class ApplicationController < ActionController::Base
   def new_user
     @user = User.new
   end
-
+  
+  def new_comment
+    @comment = Comment.new
+  end
+  
   private
   def current_user_session
     return @current_user_session if defined?(@current_user_session)

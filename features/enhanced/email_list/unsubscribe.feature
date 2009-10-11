@@ -1,5 +1,4 @@
 Feature: Unsubscribe
-  @wip
   Scenario: email_list/unsubscribe.feature
     Given I go to "the unsubscribe page"
 

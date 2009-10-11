@@ -1,93 +1,21 @@
 #container
   +container
-  :font-size 1.2em
+  :font-size 1.3em
 
-.close-bottom
-  :margin-bottom 0.5em
-  
-h4
-  :font-weight bold
-
-.header-note
-  :font-size 0.5em
-  
-#header
-  h2
-    :float left
-  #social
-    :float right
-    
 .button
   +button-button
   +button-colors
   +button-hover-colors
   +button-active-colors
-  
-#recordings
-  ul
-    :margin 0
-    :padding 0
-    +no-bullets
-  h4
-    :margin-bottom 0.5em
-  
-  embed
-    :padding 0
-    :margin 0
-    :height 40px
-#nav ul
-  +column(24)
-  +no-bullets
-  :margin 0
-  :padding 0
-  :background-color #999
-  :margin-bottom 20px
-  li
-    :text-align center
-    +column(8)
-    :margin 0
-    :padding 0
-
-      
-    a
-      +hover-link
-      +column(8)    
-      :text-transform uppercase   
-      :color white
-      :width 100%      
-      :border 1px solid #999
-      :border-width 1px 0      
-      &:hover
-        :color #000
-        :background-color #fff    
-        :border-color #000
-#welcome
-  h2
-    :margin-top 0
 
 .row
   +container
   +clearfix
-
-#email_form_container    
-  +container
-  #email_field
-    +column(6)
-    input
-      :margin 0
-      
-  .submit_container
-    +column(2)
-    :margin 0
-    :padding 0
-    .button
-      :margin 0
-    .progress_spinner
-      :display none
   
-
 hr.spacer
   +colspacer
+hr.ruler
+  +colruler
 
 #player
   +column(6)
@@ -96,18 +24,3 @@ hr.spacer
 #gigs
   +column(10,true)
 
-+sticky-footer(60px, "#container", "#footer_spacer", "#footer")
-#footer
-  ul
-    +column(24)
-    +no-bullets
-    +reset-box-model
-    li
-      +column(8)
-      :text-align center
-      :font-size 13px
-      a
-        +hover-link
-
-    li.last
-      +last

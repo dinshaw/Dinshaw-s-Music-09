@@ -19,7 +19,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :songs, :recordings, :recording_sessions, :notifications, :gigs, :venues, :addresses, :users
   end
   
-  map.resources :songs, :recordings, :recording_sessions, :notifications, :gigs, :venues, :addresses
+  map.resources :recordings, :recording_sessions, :notifications, :gigs, :venues, :addresses
+  map.resources :songs, :has_many => :comments
   map.resources :notifications, :member => { :deliver => :post }
   map.privacy 'privacy', :controller => 'public', :action => 'privacy'
   map.contact 'contact', :controller => 'public', :action => 'contact'  

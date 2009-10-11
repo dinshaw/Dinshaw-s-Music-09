@@ -1,22 +1,30 @@
 #song
   %h2
     = @song.title
-  
+
   - unless @song.recordings.blank?
     = render :partial => 'recordings/recordings', :locals => { :recordings => @song.recordings, :showing => 'song' }
 
-
-  #recordings
     %h4.close-bottom
       Notes:
 
     = textilize @song.notes
 
+  #song_container
+
+    #lyrics
+      %h4.close-bottom Lyrics:
+      =textilize @song.lyrics
+
+    #song_comments
+      %h4.close-bottom Comments
+      .comments
+        = render :partial => 'comments/comment', :collection => @song.comments
+      
+      = render :partial => 'comments/comment_form'
 
 
-  #lyrics
-    %h4.close-bottom Lyrics:
-    =textilize @song.lyrics
+
 
 
 

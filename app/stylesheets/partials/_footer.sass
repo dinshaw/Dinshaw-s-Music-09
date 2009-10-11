@@ -1,0 +1,15 @@
++sticky-footer(60px, "#container", "#footer_spacer", "#footer")
+#footer
+  ul
+    +column(24)
+    +no-bullets
+    +reset-box-model
+    li
+      +column(8)
+      :text-align center
+      :font-size 13px
+      a
+        +hover-link
+
+    li.last
+      +last

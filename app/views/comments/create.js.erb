@@ -1,0 +1,4 @@
+$('.error', '#comment_form').remove();
+$('#comment_form').prepend('<div class="error"><%= escape_javascript(errors_ul(@comment)) %></div>');
+$('.submit', '#comment_form').show();
+$('.progress_spinner', '#comment_form').hide();

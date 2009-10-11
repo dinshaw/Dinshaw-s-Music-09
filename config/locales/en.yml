@@ -9,7 +9,10 @@ en:
       activate:
         not_found: Email list activation faild. Make sure the link is right. It should look like http://dinshaw.us/activate/some-crazy-code-here. If you are still having problems, send me an email
         success: You rock again! Your email is confirmed. I will be in touch.
-        
+      actions:
+        create:
+          notice: "{{resource_name}} was successfully created!"
+      
   authlogic:
     error_messages:
       login_blank: can not be blank

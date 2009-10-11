@@ -1,0 +1,27 @@
+- form_for [@song, @comment], :html => { :id => :comment_form } do |form|
+  - unless form.error_messages.blank?
+    .error
+      = errors_ul(@comment)
+  %p
+    %label{:for => 'comment_name'}
+      Name
+      %span.required *
+    = form.text_field :name
+  %p
+    %label{:for => 'comment_email'}
+      Email
+      %span.required *
+    = form.text_field :email
+  %p
+    %label{:for => 'comment_url'} URL
+    = form.text_field :url
+  %p
+    %label{:for => 'comment_body'}
+      Comment 
+      %span.small
+        (
+        %a{:href => "http://textile.thresholdstate.com/"}>< textile formatting
+        )
+    = form.text_area :body
+
+  = render :partial => 'shared/form_submit', :locals => { :text => 'Post Comment' }

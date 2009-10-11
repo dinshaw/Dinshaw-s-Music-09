@@ -14,5 +14,5 @@ db/schema.rb
 
 config/database.yml
 config/deploy.rb
-config/initializers/site_keys.rb
+config/initializers/keys.rb
 config/initializers/smtp_gmail.rb

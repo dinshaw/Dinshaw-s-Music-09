@@ -4,8 +4,6 @@
     #email_field
       = render :partial => "users/form", :object => f, :locals => { :email_list => true }
 
-    .submit_container
-      %button.button.submit{:type=>"submit"} 
-        Signup
-      = image_tag "progress.gif", :class => :progress_spinner
+    = render :partial => 'shared/form_submit', :locals => { :text => 'Signup' }
+
       

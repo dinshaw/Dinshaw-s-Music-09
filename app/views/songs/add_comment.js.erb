@@ -1,0 +1,7 @@
+$('.error', '#comment_form').remove();
+$('.comments', '#song_comments').append('<%= escape_javascript(render :partial => "comments/comment") %></div>');
+$('#comment_form').prepend('<div class="success"><%= escape_javascript(flash.delete(:notice)) %></div>');
+$('.success','#comment_form').fadeOut(5000);
+$('.submit', '#comment_form').show();
+$('.progress_spinner', '#comment_form').hide();
+$('#comment_form')[0].reset();

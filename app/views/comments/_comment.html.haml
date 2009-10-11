@@ -1,0 +1,6 @@
+.comment
+  %h5
+    = comment.url.blank? ? comment.name : link_to(comment.name, comment.url)
+
+  =textilize comment.body
+  %hr.ruler

@@ -8,21 +8,20 @@ When /^I follow "([^\"]*)"$/ do |link|
   assert_successful_response
 end
 
-When /^I fill in "([^\"]*)" with "([^\"]*)"$$/ do |field, value|
+When /^I fill in "([^\"]*)" with "([^\"]*)"$/ do |field, value|
   # check for an element matching...
-  html_id = case
   # label tag content
-  when $browser.label(:text, field).exists?
-    $browser.label(:text, field).for
+  if $browser.label(:text, /#{field}/i).exists?
+    html_id = $browser.label(:text, /#{field}/i).for
 
   # name= atribute
-  when $browser.text_field(:name, field).exists?
-    $browser.text_field(:name, field).attribute_value(:id)
+  elsif $browser.text_field(:name, /#{field}/i).exists?
+    html_id = $browser.text_field(:name, /#{field}/i).attribute_value(:id)
 
-  # or jsut return and hope an id= works
-  # if this doesn't, then we want the exception to raise
   else
-    field
+    # or jsut return and hope an id= works
+    # if this doesn't, then we want the exception to raise
+    html_id = field
   end
 
   $browser.text_field(:id, html_id).value = value

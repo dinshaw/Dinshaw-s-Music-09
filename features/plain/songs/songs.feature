@@ -4,6 +4,5 @@ Feature: Songs
     And I am on "the homepage"
     When I click "Songs"
     Then I should see "Good Song"
-    Then I should see "recordings (2)"    
     Then I should see "Bad Song"
     Then I should see "Great Song"      
