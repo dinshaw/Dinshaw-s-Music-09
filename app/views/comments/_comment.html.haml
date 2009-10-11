@@ -1,6 +1,6 @@
 .comment
   %h5
-    = comment.url.blank? ? comment.name : link_to(comment.name, comment.url)
+    = comment.url.blank? ? comment.name : link_to(comment.name, comment.url, :class => 'external')
 
   =textilize comment.body
   %hr.ruler

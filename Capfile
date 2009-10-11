@@ -112,7 +112,7 @@ namespace :deploy do
   
   desc "Update the crontab file"
   task :update_crontab, :roles => :db do
-    run "cd #{release_path} && RAILS_ENV=production whenever --write-crontab #{application}"
+    run "cd #{release_path} && RAILS_ENV=production whenever --update-crontab #{application}"
   end
   after "deploy:symlink", "deploy:update_crontab"
 
