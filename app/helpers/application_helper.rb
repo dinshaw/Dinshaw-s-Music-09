@@ -2,7 +2,7 @@ require 'enumerator'
 module ApplicationHelper
 
   def page_title
-    [h(SITE_NAME),"|",@cms_page.title].join(" ")
+    [h(SITE_NAME),"|",@song.try(:title) || @cms_page.title].join(" ")
   end
 
   # output meta description or resuce with nil if no page is set

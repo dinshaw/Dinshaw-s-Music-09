@@ -33,6 +33,13 @@
           - flash.each do |name, msg|
             = content_tag :div, msg, :class => "#{name}" unless msg.blank?
 
+        - if @display_email_list
+          .row
+            = render :partial => "users/new_email_only"
+        
+        %h2= @cms_page.title
+        = textilize @cms_page.body
+
         = yield
 
       #footer_spacer

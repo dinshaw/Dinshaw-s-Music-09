@@ -1,11 +1,8 @@
 class CmsPage < ActiveRecord::Base
   acts_as_list :scope => :parent_id
-  # acts_as_tree
-  has_friendly_id :path
   
   validates_presence_of :title
-  validates_presence_of :path
-  validates_uniqueness_of :path
+  validates_presence_of :reference_string
   
   default_scope :order => :reference_string
   
