@@ -25,5 +25,5 @@ every 10.minutes do
 end
 
 every 1.week do
-  command 'cd /home/dinshaw1/current && /bin/bash /home/dinshaw1/log_rotate.sh'
+  command 'cd /home/dinshaw1/dinshaw.us/current && /bin/bash /home/dinshaw1/log_rotate.sh'
 end

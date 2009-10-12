@@ -39,14 +39,13 @@ namespace :deploy do
   task :restart, :roles => :app do
     run "touch #{release_path}/tmp/restart.txt"
   end
-  
+
   #  SETUP tasks
   desc "Create shared/config directories and config files."
   task :create_shared_config do
     run "mkdir -p #{shared_path}/config"
-    run "mkdir -p #{shared_path}/initializers"    
+    run "mkdir -p #{shared_path}/initializers"
     run "mkdir -p #{shared_path}/db/sphinx"
-    run "mkdir -p #{shared_path}/public/system"            
 
     # Copy database.yml if it doesn't exist.
     result = run_and_return "ls #{shared_path}/config"
@@ -63,7 +62,7 @@ namespace :deploy do
       put contents, "#{shared_path}/initializers/smtp_gmail.rb"
       inform "Please edit smtp_gmail.rb in the /initializers directory."
     end
-    
+
     # Copy keys.rb if it doesn't exist.
     result = run_and_return "ls #{shared_path}/initializers"
     unless result.match(/keys\.rb/)
@@ -78,16 +77,9 @@ namespace :deploy do
   desc "Copy all config files from shared to release"
   task :copy_config_files do
     run "cp #{shared_path}/config/* #{release_path}/config/"
-    run "cp #{shared_path}/initializers/* #{release_path}/config/initializers/"    
+    run "cp #{shared_path}/initializers/* #{release_path}/config/initializers/"
   end
   after "deploy:update_code", "deploy:copy_config_files"
-
-  desc "Make sym link for user content and sphinx db"
-  task :make_sym_links_for_user_content do
-    run "ln -s  #{shared_path}/db/sphinx #{release_path}/db/sphinx"    
-    run "ln -s  #{shared_path}/public/system #{release_path}/public/system"       
-  end
-  after "deploy:update_code", "deploy:make_sym_links_for_user_content"
 
   # create custom maintenence page
   namespace :web do
@@ -105,13 +97,14 @@ namespace :deploy do
 
   # desc "Reindex and restart sphinx"
   # task :sphinx_in do
-  #   run "cd #{release_path}; rake ts:rebuild RAILS_ENV=#{rails_env}"     
+  #   run "ln -s  #{shared_path}/db/sphinx #{release_path}/db/sphinx"  
+  #   run "cd #{release_path}; rake ts:rebuild RAILS_ENV=#{rails_env}"
   # end
   # after "deploy:update_code", "deploy:sphinx_in"
 
   before "deploy:update_code", 'deploy:web:disable'
   after "deploy:restart", 'deploy:web:enable'
-  
+
   desc "Update the crontab file"
   task :update_crontab, :roles => :db do
     run "cd #{release_path} && RAILS_ENV=production whenever --update-crontab #{application}"
@@ -121,14 +114,14 @@ namespace :deploy do
   desc "Install scripts"
   task :install_scripts do
     run "cp #{release_path}/lib/nix_scripts/delayed_job_monitor.sh ~/"
-    run "chmod 775 ~/delayed_job_monitor.sh"    
+    run "chmod 775 ~/delayed_job_monitor.sh"
     run "cp #{release_path}/lib/nix_scripts/ar_mailer_monitor.sh ~/"
     run "chmod 775 ~/ar_mailer_monitor.sh"
     run "cp #{release_path}/lib/nix_scripts/log_rotate.sh ~/"
-    run "chmod 775 ~/log_rotate.sh"    
+    run "chmod 775 ~/log_rotate.sh"
   end
   after "deploy:update_code", "deploy:install_scripts"
-  
+
 end
 
 namespace :delayed_job do
@@ -146,7 +139,7 @@ namespace :delayed_job do
   end
 end
 
-# after "deploy:stop",    "delayed_job:stop"
-# after "deploy:start",   "delayed_job:start"
-# after "deploy:restart", "delayed_job:restart"
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"
 
