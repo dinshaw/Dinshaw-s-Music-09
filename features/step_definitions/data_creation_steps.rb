@@ -16,6 +16,15 @@ Given /^there (?:are|is) "([^\"]*)" "([^\"]*)" named "([^\"]*)"$/ do |num, items
   end
 end
 
+Given /^there is a user with email "([^\"]*)"$/ do |email|
+  @user = User.make(:email => email)
+end
+
+# Given /^there is a user with email "([^\"]*)"$/ do |arg1|
+#   User.create(:email => 'info@dinshaw.us', :password => 'password', :password_confirmation => 'password')
+# end
+
+
 def split_names(names)
   names.split(/and|,/).map{ |name| name.strip if !name.blank? }.compact
 end

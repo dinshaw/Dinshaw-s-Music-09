@@ -2,5 +2,6 @@
   #player
     - swf_tag "player", :size => '227x407' do
       %p.error You need flash and Javascript to see the player.
-
-  = render :partial => 'gigs/gigs'
+  #gigs
+    %h2 Gigs
+    = render :partial => 'gigs/gigs'

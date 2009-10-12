@@ -1,5 +1,4 @@
 Feature: songs/comment
-  @wip
   Scenario: Comment on a song with success
     Given there is "1" "song" named "Good Song"
     And I go to "Good Song's song page"

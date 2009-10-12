@@ -1,7 +1,11 @@
 Feature: Unsubscribe
+  @wip  
   Scenario: email_list/unsubscribe.feature
-    Given I go to "the unsubscribe page"
-
+    Given I go to "the homepage"
+    When I fill in "user_email" with "test@tester.com"
+    And I press "Signup"
+    
+    And I go to "the unsubscribe page"
     When I fill in "user_email" with ""
     And I press "Unsubscribe"
     And I wait
@@ -20,5 +24,4 @@ Feature: Unsubscribe
     When I fill in "user_email" with "test@tester.com"
     And I press "Unsubscribe"
     And I wait
-    Then I should be on "the homepage"
     And I should see "removed"
