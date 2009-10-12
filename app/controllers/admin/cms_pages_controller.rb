@@ -1,11 +1,14 @@
 class Admin::CmsPagesController < AdminController
   admin_assistant_for CmsPage do |aa|
     aa.form do |form|
-      form.columns :reference_string, :title, :sub_titile, :sub_title_url, :body, :meta_keyword, :meta_description
+      form.columns :reference_string, :title, :meta_keyword, :meta_description
+      form[:body ].text_area_options = {:rows => 2}
+      form[:meta_description ].text_area_options = {:rows => 5}
+      form[:meta_keyword ].text_area_options = {:rows => 5}      
     end
 
     aa.index do |index|
-      index.columns :reference_string, :title, :sub_titile, :sub_title_url, :body, :meta_keyword, :meta_description
+      index.columns :reference_string, :title, :meta_keyword, :meta_description
     end
   end
 end

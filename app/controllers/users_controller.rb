@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @email_list = params[:email_list]
 
     if @user.save
-      flash[:message] = I18n.t('flash.user.create.success')
+      flash[:success] = I18n.t('flash.user.create.success')
       # pass email to DelayedJob
       UserMailer.send_later(:deliver_signup_notification, @user)
       respond_to do |format|
