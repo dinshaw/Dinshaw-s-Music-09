@@ -46,7 +46,7 @@ namespace :deploy do
     run "mkdir -p #{shared_path}/config"
     run "mkdir -p #{shared_path}/initializers"    
     run "mkdir -p #{shared_path}/db/sphinx"
-    run "mkdir -p #{shared_path}/public/system"      
+    run "mkdir -p #{shared_path}/public/system"            
 
     # Copy database.yml if it doesn't exist.
     result = run_and_return "ls #{shared_path}/config"
@@ -57,6 +57,7 @@ namespace :deploy do
     end
 
     # Copy smtp_gmail.rb if it doesn't exist.
+    result = run_and_return "ls #{shared_path}/initializers"
     unless result.match(/smtp_gmail\.rb/)
       contents = render_erb_template(File.dirname(__FILE__) + "/config/initializers/smtp_gmail.rb.example")
       put contents, "#{shared_path}/initializers/smtp_gmail.rb"
@@ -64,6 +65,7 @@ namespace :deploy do
     end
     
     # Copy keys.rb if it doesn't exist.
+    result = run_and_return "ls #{shared_path}/initializers"
     unless result.match(/keys\.rb/)
       contents = render_erb_template(File.dirname(__FILE__) + "/config/initializers/keys.rb.example")
       put contents, "#{shared_path}/initializers/keys.rb"
@@ -83,7 +85,7 @@ namespace :deploy do
   desc "Make sym link for user content and sphinx db"
   task :make_sym_links_for_user_content do
     run "ln -s  #{shared_path}/db/sphinx #{release_path}/db/sphinx"    
-    run "ln -s  #{shared_path}/public/system #{release_path}/public/system"        
+    run "ln -s  #{shared_path}/public/system #{release_path}/public/system"       
   end
   after "deploy:update_code", "deploy:make_sym_links_for_user_content"
 
@@ -116,14 +118,16 @@ namespace :deploy do
   end
   after "deploy:symlink", "deploy:update_crontab"
 
-  desc "Install monitor scripts"
-  task :install_monitors do
-    run "cp #{release_path}/lib/monitors/delayed_job_monitor.sh ~/"
+  desc "Install scripts"
+  task :install_scripts do
+    run "cp #{release_path}/lib/nix_scripts/delayed_job_monitor.sh ~/"
     run "chmod 775 ~/delayed_job_monitor.sh"    
-    run "cp #{release_path}/lib/monitors/ar_mailer_monitor.sh ~/"
+    run "cp #{release_path}/lib/nix_scripts/ar_mailer_monitor.sh ~/"
     run "chmod 775 ~/ar_mailer_monitor.sh"
+    run "cp #{release_path}/lib/nix_scripts/log_rotate.sh ~/"
+    run "chmod 775 ~/log_rotate.sh"    
   end
-  after "deploy:update_code", "deploy:install_monitors"
+  after "deploy:update_code", "deploy:install_scripts"
   
 end
 
