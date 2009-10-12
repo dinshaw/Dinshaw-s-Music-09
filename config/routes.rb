@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/admin/recordings/autocomplete_song', :controller => 'admin/recordings', :action => 'autocomplete_song'
   
   map.namespace :admin do |admin|
-    admin.resources :songs, :recordings, :recording_sessions, :notifications, :gigs, :venues, :addresses, :users, :comments
+    admin.resources :songs, :recordings, :recording_sessions, :notifications, :gigs, :venues, :addresses, :users, :comments, :cms_pages
   end
   
   map.resources :recordings, :recording_sessions, :notifications, :gigs, :venues, :addresses
