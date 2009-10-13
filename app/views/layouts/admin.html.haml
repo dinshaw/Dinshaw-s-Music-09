@@ -37,4 +37,7 @@
           %a{:href => '/admin/cms_pages'} CMS Pages
           
     #admin_content
+      #flash_block
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :class => "#{name}" unless msg.blank?
       = yield

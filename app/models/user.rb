@@ -20,4 +20,6 @@ class User < ActiveRecord::Base
   aasm_event :activate do
     transitions :from => :pending, :to => :active 
   end
+  
+  named_scope :unnotified, lambda{ |notification_id| { :conditions => ['last_notification <> ? OR last_notification is null', notification_id] } }
 end

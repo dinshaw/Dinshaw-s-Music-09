@@ -4,22 +4,38 @@ class NotificationTest < ActiveSupport::TestCase
   context 'valid' do
     setup do
       @time = Time.now
-      @venue = mock('Venu', :name => 'The River')
-      @gig = mock('Gig', :venue => @venue, :start_time => @time, :end_time => Time.now + 2.hours, :description => 'My band playing live!')
+      @venue = mock('Venu')
+      @venue.stubs(:name).returns('The River')
+      @venue.stubs(:location).returns('10 ave between 42 and 43')
+      @venue.stubs(:directions).returns('A, C, or E to 42nd st.')      
+      @gig = mock('Gig')
+      @gig.stubs(:venue).returns(@venue)
+      @gig.stubs(:time_start).returns(@time)
+      @gig.stubs(:time_end).returns(Time.now + 2.hours)
+      @gig.stubs(:description).returns('My band playing live!')
+      
       Gig.stubs(:find).returns(@gig)
 
       @gig_info = <<-EOS
-Upcoming Show!
-Where: The River
-When: #{@time.to_s(:gig)} to #{(@time+2.hours).to_s(:end_time)}
+Dinshaw Live!
 
 My band playing live!
+
+Where: The River
+10 ave between 42 and 43
+A, C, or E to 42nd st.
+
+When: #{@time.to_s(:gig)} to #{(@time+2.hours).to_s(:time_end)}
       EOS
-      @notification = Notification.new(:gig_id => @gig)
+      
+      @gig_subject = "Live at The River: #{@time.to_s(:gig)}"
+      @notification = Notification.new
     end
 
     should 'format gig information' do
-      assert_equal @notification.gig_info, @gig_info
+      assert_equal @notification.gig_info(@gig.id), @gig_info
+      assert_equal @notification.gig_subject(@gig.id), @gig_subject
     end
   end
 end
+

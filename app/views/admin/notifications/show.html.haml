@@ -4,7 +4,7 @@
     = @notification.body
 
 - if @notification.delivered_at.nil?
-  - form_for @notification, :url => deliver_notification_path(@notification), :method => :post do |f|
+  - form_for @notification, :url => deliver_admin_notification_path(@notification), :html => { :method => :post } do |f|
     %button.button.submit
       Deliver
 - else

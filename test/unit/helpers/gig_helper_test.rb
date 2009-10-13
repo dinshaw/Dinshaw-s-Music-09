@@ -11,11 +11,11 @@ class GigHelperTest < ActiveSupport::TestCase
     end
 
     should 'format the time with start and end' do
-      assert_equal [@time.strftime(GIG_TIME_FORMAT), 'to', (@time + 2.hours).strftime(GIG_END_TIME_FORMAT)].join(" "),  show_time(@gig)
+      assert_equal [@time.to_s(:gig), 'to', (@time + 2.hours).to_s(:time_end)].join(" "),  show_time(@gig)
     end
 
     should 'format the time with just end' do
-      assert_equal show_time(@gig, :end => false), @time.strftime(GIG_TIME_FORMAT)
+      assert_equal show_time(@gig, :end => false), @time.to_s(:gig)
     end
   end
 end

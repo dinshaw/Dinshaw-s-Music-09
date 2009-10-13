@@ -1,14 +1,23 @@
 class Notification < ActiveRecord::Base
-  attr_accessor :gig_id
 
-  def gig_info
+  def gig_info(gig_id)
     gig = Gig.find(gig_id)
     <<-EOS
-Upcoming Show!
-Where: #{gig.venue.name}
-When: #{gig.start_time.to_s(:gig)} to #{gig.end_time.to_s(:end_time)}
+Dinshaw Live!
 
 #{gig.description}
+
+Where: #{gig.venue.name}
+#{gig.venue.location}
+#{gig.venue.directions}
+
+When: #{gig.time_start.to_s(:gig)} to #{gig.time_end.to_s(:time_end)}
     EOS
+  rescue
+  end
+  
+  def gig_subject(gig_id)
+    gig = Gig.find(gig_id)
+    ['Live at',gig.venue.name+':', gig.time_start.to_s(:gig)].join(" ")
   end
 end
