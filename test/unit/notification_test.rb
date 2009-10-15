@@ -7,6 +7,7 @@ class NotificationTest < ActiveSupport::TestCase
       @venue = mock('Venu')
       @venue.stubs(:name).returns('The River')
       @venue.stubs(:location).returns('10 ave between 42 and 43')
+      @venue.stubs(:url).returns('http://theriver.com')  
       @venue.stubs(:directions).returns('A, C, or E to 42nd st.')      
       @gig = mock('Gig')
       @gig.stubs(:venue).returns(@venue)
@@ -21,7 +22,7 @@ Dinshaw Live!
 
 My band playing live!
 
-Where: The River
+Where: The River (http://theriver.com)
 10 ave between 42 and 43
 A, C, or E to 42nd st.
 
@@ -33,8 +34,8 @@ When: #{@time.to_s(:gig)} to #{(@time+2.hours).to_s(:time_end)}
     end
 
     should 'format gig information' do
-      assert_equal @notification.gig_info(@gig.id), @gig_info
-      assert_equal @notification.gig_subject(@gig.id), @gig_subject
+      assert_equal @notification.gig_info(1), @gig_info
+      assert_equal @notification.gig_subject(1), @gig_subject
     end
   end
 end

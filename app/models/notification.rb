@@ -7,7 +7,7 @@ Dinshaw Live!
 
 #{gig.description}
 
-Where: #{gig.venue.name}
+Where: #{gig.venue.name} #{['(',gig.venue.url,')'].join if !gig.venue.url.blank?}
 #{gig.venue.location}
 #{gig.venue.directions}
 
