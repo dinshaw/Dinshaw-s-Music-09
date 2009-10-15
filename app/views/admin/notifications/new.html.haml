@@ -1,0 +1,12 @@
+#admin_content
+  .admin_assistant.form.admin_recordings
+    .aa_header
+      %h2 New Notification
+      .actions
+        = link_to "Back to Index", admin_recordings_path
+      
+
+    - form_for [:admin, @notification] do |form|
+      = form.text_field :title
+      = form.text_area :body
+      = form.submit 'Save'
