@@ -1,9 +1,9 @@
 class AddUrlToVenue < ActiveRecord::Migration
   def self.up
-    add_column :venue, :url, :string
+    add_column :venues, :url, :string
   end
 
   def self.down
-    remove_column :venue, :url
+    remove_column :venues, :url
   end
 end
