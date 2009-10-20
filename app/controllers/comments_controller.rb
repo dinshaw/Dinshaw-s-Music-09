@@ -7,5 +7,6 @@ class CommentsController < InheritedResources::Base
     failure.html { render :template => 'songs/show' }
     success.html { redirect_to song_url(@song) }
     success.js { render :template => 'songs/add_comment' }
+    expire_page song_path(@song)
   end
 end

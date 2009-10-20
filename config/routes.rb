@@ -4,8 +4,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session
   map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
   map.login '/login', :controller => 'user_sessions', :action => 'new'
+  map.forgot_password '/forgot_password', :controller => 'password_resets', :action => 'new'  
 
-  map.resources :users
+  map.resources :users, :password_resets
   map.resource :account, :controller => "users"
   map.activate '/activate/:perishable_token', :controller => 'users', :action => 'activate', :perishable_token => nil
   # map.register '/register', :controller => 'users', :action => 'create'

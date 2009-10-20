@@ -3,6 +3,9 @@ require 'test_helper'
 class Admin::NotificationsControllerTest < ActionController::TestCase
   context 'generate notification' do
     setup do
+      @user = User.make
+      @user.has_role!(:superuser)
+      @controller.stubs(:current_user).returns(@user)
       @time = Time.now
       @venue = Venue.make(:name => 'The River')
       @gig = Gig.make(

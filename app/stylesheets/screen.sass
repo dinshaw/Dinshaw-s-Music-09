@@ -7,6 +7,8 @@
 @import blueprint/modules/debug.sass
 @import blueprint/modules/buttons.sass
 
+@import compass/layout.sass
+@import compass/utilities.sass
 //!font_color = #333
 //!quiet_color = !font_color + #333
 //!loud_color = !font_color - #222
@@ -32,9 +34,12 @@
 //!removed_color = #FFF
 //!removed_bg_color = #900
 
-
-!blueprint_font_size   = 13px
+!blueprint_font_size = 13px
 !blueprint_font_family = "Verdana, Georgia, Arial, sans-serif"
+
+//not working?
+
+!input_width = 100px
 
 =blueprint(!body_selector = "body")
   +blueprint-typography
@@ -44,10 +49,9 @@
   +blueprint-interaction
   +blueprint-form
 
+
 +blueprint('#dinshaw')
 
-@import compass/layout.sass
-@import compass/utilities.sass
 @import partials/layout.sass
 @import partials/home.sass
 @import partials/song.sass
@@ -55,6 +59,7 @@
 @import partials/nav.sass
 @import partials/recordings.sass
 @import partials/forms.sass
+
 @import partials/footer.sass
 @import partials/headers.sass
 @import partials/errors.sass

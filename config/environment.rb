@@ -4,6 +4,7 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
   SITE_NAME = "DINSHAW"
   ADMINEMAIL = "info@dinshaw.us"
+  BASE_DOMAIN = "dinshaw.us"
   
   config.gem "authlogic"
   config.gem 'chriseppstein-compass', :lib => 'compass', :source => 'http://gems.github.com/'
@@ -22,6 +23,7 @@ Rails::Initializer.run do |config|
   config.gem 'javan-whenever', :lib => false, :source => 'http://gems.github.com'
   config.gem "RedCloth", :version => ">= 4.2.2", :source => "http://code.whytheluckystiff.net"
   config.gem "ambethia-recaptcha", :lib => "recaptcha/rails", :source => "http://gems.github.com"  
+  config.gem "be9-acl9", :source => "http://gems.github.com", :lib => "acl9"  
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.

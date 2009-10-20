@@ -1,16 +1,29 @@
+label
+  :display block
+  :font-weight normal
 .progress_spinner
   :display none
   
 #email_form_container    
   +container
+  
   #email_field
-    +column(6)
+    +column(8)
+    
     input
       :margin 0
       
   .submit_container
-    +column(2)
+    +column(2,true)
     :margin 0
     :padding 0
+    
     .button
       :margin 0
+
+input[type=checkbox]
+  :float left
+  :margin-right 10px
+
+input[type=text], input[type=password]
+  :width 200px

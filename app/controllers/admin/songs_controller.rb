@@ -11,4 +11,11 @@ class Admin::SongsController < AdminController
     end
   end
 
+  protected
+  
+  # This is run after all saves, whether they're creates or updates
+  def after_save(song)
+    expire_page song_url(song)
+    expire_page 'songs'
+  end
 end

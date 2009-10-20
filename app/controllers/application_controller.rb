@@ -3,13 +3,9 @@
 
 class ApplicationController < ActionController::Base
   htpasswd :user=>"dinshaw", :pass=>"Y/bHA8xEf{vTQ6RKDk" if RAILS_ENV == 'staging'
-  
   layout "main"
-
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-
-  # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation
   helper_method :current_user_session, :current_user
 
@@ -32,11 +28,11 @@ class ApplicationController < ActionController::Base
   def new_user
     @user = User.new
   end
-  
+
   def new_comment
     @comment = Comment.new
   end
-  
+
   private
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
@@ -73,5 +69,14 @@ class ApplicationController < ActionController::Base
   def redirect_back_or_default(default)
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
+  end
+  
+  def access_denied
+    if current_user
+      render :template => 'home/access_denied'
+    else
+      flash[:notice] = 'Access denied. Try to log in first.'
+      redirect_to login_path
+    end
   end
 end

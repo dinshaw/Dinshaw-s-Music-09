@@ -3,14 +3,14 @@
   = form.hidden_field :password, :value => 'password'
   = form.hidden_field :password_confirmation, :value => 'password'
   %p
-    = form.text_field :email
+    = form.text_field :email, :class => :text
 
 - else
   = form.label :email
-  = form.text_field :email
+  = form.text_field :email, :class => :text
 
   = form.label :password, form.object.new_record? ? nil : "Change password"
-  = form.password_field :password
+  = form.password_field :password, :class => :text
 
-  = form.label :password_confirmation
-  = form.password_field :password_confirmation
+  = form.label :password_confirmation, :class => :text
+  = form.password_field :password_confirmation, :class => :text
