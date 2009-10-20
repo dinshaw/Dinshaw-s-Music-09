@@ -27,3 +27,7 @@ end
 every 1.week do
   command 'cd /home/dinshaw1/dinshaw.us/current/log && /bin/bash /home/dinshaw1/log_rotate.sh'
 end
+
+every 2.minutes do
+  command 'wget -O /dev/null http://dinshaw.us/privacy 2>/dev/null'
+end
