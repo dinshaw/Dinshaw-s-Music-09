@@ -17,9 +17,9 @@ class Admin::NotificationsController < AdminController
   #    @notification.title =  @notification.gig_subject(params[:gig_id])    
   #  end
   #  
-  #  def show
-  #    @notification = Notification.find(params[:id])
-  #  end
+   def show
+     @notification = Notification.find(params[:id])
+   end
   
   def deliver
     Delayed::Job.enqueue( MailingJob.new(params[:id]), -3 ) 
