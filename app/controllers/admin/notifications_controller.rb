@@ -11,15 +11,15 @@ class Admin::NotificationsController < AdminController
     a.show.columns :title, :body
   end
   
-  def new
-    @notification = Notification.new
-    @notification.body =  @notification.gig_info(params[:gig_id])
-    @notification.title =  @notification.gig_subject(params[:gig_id])    
-  end
-  
-  def show
-    @notification = Notification.find(params[:id])
-  end
+  # def new
+  #    @notification = Notification.new
+  #    @notification.body =  @notification.gig_info(params[:gig_id])
+  #    @notification.title =  @notification.gig_subject(params[:gig_id])    
+  #  end
+  #  
+  #  def show
+  #    @notification = Notification.find(params[:id])
+  #  end
   
   def deliver
     Delayed::Job.enqueue( MailingJob.new(params[:id]), -3 ) 
