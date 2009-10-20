@@ -1,7 +1,7 @@
 class MailingJob < Struct.new(:notification_id)
   def perform
     notification = Notification.find(notification_id)
-    users = User.active.unnotified(notification_id).each do |user|
+    User.active.unnotified(notification_id).each do |user|
       UserMailer.deliver_notification(notification, user)
       user.notify!(notification_id)
     end
