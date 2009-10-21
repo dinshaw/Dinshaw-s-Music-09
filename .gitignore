@@ -16,3 +16,5 @@ config/database.yml
 config/deploy.rb
 config/initializers/keys.rb
 config/initializers/smtp_gmail.rb
+
+vendor/gems/RedCloth-4.2.2
