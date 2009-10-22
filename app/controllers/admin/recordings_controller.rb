@@ -1,4 +1,6 @@
 class Admin::RecordingsController < AdminController
+  cache_sweeper :recording_sweeper, :only => [:create, :update, :destroy]
+  
   admin_assistant_for Recording do |a|
     a.actions << :destroy
       a.index do |index|

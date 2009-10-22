@@ -1,4 +1,6 @@
 class Admin::SongsController < AdminController
+  cache_sweeper :song_sweeper, :only => [:create, :update, :destroy]
+
   admin_assistant_for Song do |a|
     # a.actions << :destroy
     a.index do |index|

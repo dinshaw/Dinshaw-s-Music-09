@@ -1,5 +1,8 @@
 class Admin::GigsController < AdminController
+  cache_sweeper :gig_sweeper, :only => [:create, :update, :destroy]
+  
   admin_assistant_for Gig do |a|
+    a.actions << :destroy
     a.index do |index|
       index.columns :venue, :description, :time_start, :time_end
     end

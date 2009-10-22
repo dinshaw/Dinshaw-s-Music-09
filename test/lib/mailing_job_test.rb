@@ -3,6 +3,7 @@ class MailingJobTest < ActiveSupport::TestCase
   context 'perform' do
     setup do
       @notification = Notification.make
+      Notification.stubs(:find).returns(@notification)
       3.times do
         user = User.make
         user.activate!
@@ -20,6 +21,12 @@ class MailingJobTest < ActiveSupport::TestCase
       assert_equal User.count, 7
       assert_equal User.active.count, 5
       assert_equal User.active.unnotified(@notification.id).count, 3
+    end
+    
+    should 'perform without error' do
+      @job = MailingJob.new(1)
+      UserMailer.stubs(:deliver_notification)
+      @job.perform
     end
   end
 end

@@ -22,6 +22,11 @@ Gig.blueprint do
   recording_session
 end
 
+Notification.blueprint do
+  title
+  body { Sham.description }
+end
+
 Recording.blueprint do
   notes { Sham.description }
   # paperclip

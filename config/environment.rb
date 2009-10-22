@@ -29,7 +29,7 @@ Rails::Initializer.run do |config|
   # -- all .rb files in that directory are automatically loaded.
 
   # Add additional load paths for your own custom dirs
-  config.load_paths += %W( #{RAILS_ROOT}/admin #{RAILS_ROOT}/vendor/gems/RedCloth-4.2.2/ext/redcloth_scan)
+  config.load_paths += %W( #{RAILS_ROOT}/app/sweepers #{RAILS_ROOT}/admin #{RAILS_ROOT}/vendor/gems/RedCloth-4.2.2/ext/redcloth_scan )
   
   # Activate observers that should always be running
   # config.active_record.observers = :user_observer

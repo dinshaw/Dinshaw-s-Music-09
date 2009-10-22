@@ -1,5 +1,5 @@
 class RecordingsController < ApplicationController
-  caches_action :index
+  caches_page :index
   
   def index
     @recordings = Recording.all
