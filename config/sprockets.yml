@@ -6,8 +6,6 @@
 :source_files:
   - app/javascripts/swfobject.js
   - app/javascripts/jquery.js
+  - app/javascripts/placeholder.js  
   - app/javascripts/links.js
   - app/javascripts/forms.js
-
-
-

@@ -11,7 +11,7 @@ jQuery.fn.submitWithAjax = function() {
     // hide the submit button and show the progess spinner
     $('.submit',this).hide();
     $('.progress_spinner', this).show();
-    
+
     $.post(this.action+'.js', $(this).serialize(), null, "script");
     return false;
   })
@@ -21,7 +21,7 @@ jQuery.fn.submitWithAjax = function() {
 $(function($){//on document ready
   // hide by default just in case the css didn't catch it
   $('.progress_spinner').hide('fast');
-  
+
   $("#email_list_form").submitWithAjax();
   $("#comment_form").submitWithAjax();  
 });

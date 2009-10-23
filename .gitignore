@@ -1,6 +1,7 @@
 .DS_Store
 webrat*
 log/*
+tmp/*
 tmp/**/*
 tmp/restart.txt
 *.swp
