@@ -1,6 +1,6 @@
 class PublicController < ApplicationController
   before_filter :new_user
-  caches_page :index
+  caches_page :index, :contact, :privacy, :unsubscribe
   
   def index
     @gigs = Gig.upcoming
