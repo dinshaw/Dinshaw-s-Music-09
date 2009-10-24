@@ -26,6 +26,7 @@
           = link_to image_tag('icons/facebook_32.png'), 'http://www.facebook.com/pages/Dinshaw/143653234540'
           = link_to image_tag('icons/twitter_32.png'), 'http://twitter.com/dinshawg'
           = link_to image_tag('icons/myspace_32.png'), 'http://www.myspace.com/dinshaw'
+          = link_to image_tag('icons/rss_32.png'), feeds_path
         %h1 dinshaw
 
       #content
@@ -37,7 +38,7 @@
           .row
             = render :partial => "users/new_email_only"
         
-        %h2= @cms_page.title
+        %h2= page_header
         = textilize @cms_page.body
 
         = yield

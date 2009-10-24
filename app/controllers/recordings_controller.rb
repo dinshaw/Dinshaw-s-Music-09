@@ -1,8 +1,5 @@
-class RecordingsController < ApplicationController
-  caches_page :index
-  
-  def index
-    @recordings = Recording.all
-  end
-
+class RecordingsController< InheritedResources::Base
+ respond_to :html, :xml, :js, :rss
+ actions :index, :show
+ caches_page :index, :show
 end

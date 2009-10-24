@@ -5,6 +5,14 @@ module ApplicationHelper
     [h(SITE_NAME),"|",@song.try(:title) || @cms_page.title].join(" ")
   end
 
+  def page_header
+    @page_header || case
+    when @song
+      @song.title
+    else
+      @cms_page.title
+    end
+  end
   # output meta description or resuce with nil if no page is set
   def meta_description 
     if @song and !@song.new_record?

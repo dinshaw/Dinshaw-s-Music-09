@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  htpasswd :user=>"dinshaw", :pass=>"Y/bHA8xEf{vTQ6RKDk" if RAILS_ENV == 'staging'
+  htpasswd :user=>"dinshaw", :pass=>"staging" if RAILS_ENV == 'staging'
   layout "main"
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details

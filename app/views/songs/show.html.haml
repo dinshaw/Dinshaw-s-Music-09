@@ -1,7 +1,5 @@
+- @song.title
 #song
-  %h2
-    = @song.title
-
   - unless @song.recordings.blank?
     = render :partial => 'recordings/recordings', :locals => { :recordings => @song.recordings, :showing => 'song' }
 
@@ -17,10 +15,12 @@
       =textilize @song.lyrics
 
     #song_comments
-      %h4.close-bottom Comments
+      %h4.close-bottom
+        = "Comments (#{@song.comments.count})"
+      = link_to image_tag('icons/rss_16.png'), song_comments_path(@song, :format => :xml), :id => :comment_rss, :class => :right
       .comments
         = render :partial => 'comments/comment', :collection => @song.comments
-      
+
       = render :partial => 'comments/comment_form'
 
 

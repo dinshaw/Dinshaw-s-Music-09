@@ -12,6 +12,12 @@ Address.blueprint do
   addressable { Venue.make }
 end
 
+CmsPage.blueprint do
+  reference_string { Sham.title }
+  title
+  body { Sham.description }
+end
+
 Gig.blueprint do
   time_start { Time.now }
   time_end { Time.now + 2.hours }

@@ -1,4 +1,6 @@
 class Admin::CmsPagesController < AdminController
+  cache_sweeper :cms_page_sweeper, :only => [:create, :update, :destroy]
+  
   admin_assistant_for CmsPage do |aa|
     aa.form do |form|
       form.columns :reference_string, :title, :body, :meta_keyword, :meta_description

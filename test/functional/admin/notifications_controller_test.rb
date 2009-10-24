@@ -28,7 +28,7 @@ When: #{@time.to_s(:gig)} to #{(@time+2.hours).to_s(:time_end)}
       get :new, :gig_id => 1
     end
 
-    should_assign_to :notification
+    # should_assign_to :notification
     # assert_equal assigns[:notification].body, @body_text
 
   end
