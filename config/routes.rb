@@ -18,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.namespace :admin do |admin|
     admin.resources :songs, :recordings, :recording_sessions, :gigs, :venues, :addresses, :users, :comments, :cms_pages
-    admin.resources :notifications, :member => { :deliver => :post }
+    admin.resources :notifications, :member => { :deliver => :post, :new_from_gig => :post }
   end
 
   map.resources :recordings, :recording_sessions, :gigs, :venues, :addresses, :comments

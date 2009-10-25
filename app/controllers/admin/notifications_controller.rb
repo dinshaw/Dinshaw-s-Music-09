@@ -11,10 +11,11 @@ class Admin::NotificationsController < AdminController
     a.show.columns :title, :body
   end
 
-  def new
+  def new_from_gig
     @notification = Notification.new
     @notification.body =  @notification.gig_info(params[:gig_id])
     @notification.title =  @notification.gig_subject(params[:gig_id])    
+    render :action => :new
   end
 
   def show

@@ -1,5 +1,5 @@
 = render :partial => '/gigs/gig', :locals => { :full => true }
 
-- form_for Notification.new, :url => new_admin_notification_path do |form|
+- form_for Notification.new, :url => new_from_gig_admin_notification_path do |form|
   = hidden_field_tag :gig_id, @gig.id
   %button.button Generate Notification
