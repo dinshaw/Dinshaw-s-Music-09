@@ -11,8 +11,6 @@ class CmsPageSweeper < ActionController::Caching::Sweeper
 
   private
   def expire_cache(cms_page)
-    expire_page cms_pages_path
-    expire_page cms_page_path(cms_page)
     case cms_page.reference_string
     when /privacy/i
       expire_page '/privacy'

@@ -1,7 +1,7 @@
 xml.instruct! :xml, :version=>"1.0" 
 xml.rss(:version=>"2.0") do
   xml.channel do
-    xml.title ["Comments", (@song.title if @song)].compact.join(" for ") + [" ","(",@comments.count.to_s,")"].join
+    xml.title ["Comments", (@song.title if @song)].compact.join(" for ") + [" ","(",@comments.size,")"].join
     xml.link @song ? song_url(@song) : "http://dinshaw.us"
     xml.description "Comments for songs by Dinshaw"
     xml.language 'en-us'
