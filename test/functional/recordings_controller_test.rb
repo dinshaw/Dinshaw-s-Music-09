@@ -24,6 +24,11 @@ class RecordingsControllerTest < ActionController::TestCase
       should_render_template 'index.rss.builder'
       should_respond_with_content_type /rss/
       should_assign_to :recordings
+      
+      should 'have two items' do
+        doc = Nokogiri::XML(@controller.response.body)
+        assert_equal Recording.count, doc.xpath('//item').size
+      end
     end
   end
 end

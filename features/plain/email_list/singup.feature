@@ -28,3 +28,13 @@ Feature: Sign up for the emal List
     And I press "Signup"
     And I should see "suspiciously unlike an email address"
 
+  # Scenario: new user successfully activates their account
+  #    Given I have no users
+  #    When I sign up with email "my@email.com"
+  #    Then "my@email.com" should receive 1 email
+  #    When "my@email.com" opens the email with text "activate your account"
+  #    And I follow "activate your account" in the email
+  #    Then I should be on the account active page
+  #    And I should see "Your account is now active"
+  #    And I should be logged in
+ 

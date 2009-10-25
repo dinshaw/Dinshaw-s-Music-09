@@ -1,5 +1,6 @@
 class Admin::CommentsController < AdminController
- admin_assistant_for Comment do |aa|
-   aa.actions << :destroy
- end
+  cache_sweeper :comment_sweeper, :only => [:create, :update, :destroy]
+  admin_assistant_for Comment do |aa|
+    aa.actions << :destroy
+  end
 end

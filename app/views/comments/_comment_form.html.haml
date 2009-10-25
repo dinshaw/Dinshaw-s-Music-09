@@ -6,15 +6,15 @@
     %label{:for => 'comment_name'}
       Name
       %span.required *
-    = form.text_field :name
+    = form.text_field :name, :class => :text
   %p
     %label{:for => 'comment_email'}
       Email
       %span.required *
-    = form.text_field :email
+    = form.text_field :email, :class => :text
   %p
     %label{:for => 'comment_url'} URL
-    = form.text_field :url
+    = form.text_field :url, :class => :text
   %p
     %label{:for => 'comment_body'}
       Comment 

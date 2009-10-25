@@ -22,14 +22,15 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.resources :recordings, :recording_sessions, :gigs, :venues, :addresses, :comments
+
   map.resources :songs, :has_many => :comments
   map.privacy 'privacy', :controller => 'public', :action => 'privacy'
   map.contact 'contact', :controller => 'public', :action => 'contact'
   map.feeds 'feeds', :controller => 'public', :action => 'feeds'
+
   SprocketsApplication.routes(map)
 
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action.:format'
   map.connect ':controller/:action/:id.:format'
-
 end

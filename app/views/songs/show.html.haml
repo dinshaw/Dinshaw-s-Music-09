@@ -17,7 +17,7 @@
     #song_comments
       %h4.close-bottom
         = "Comments (#{@song.comments.count})"
-      = link_to image_tag('icons/rss_16.png'), song_comments_path(@song, :format => :xml), :id => :comment_rss, :class => :right
+        = link_to image_tag('icons/rss_16.png'), song_comments_path(@song, :format => :rss), :id => :comment_rss
       .comments
         = render :partial => 'comments/comment', :collection => @song.comments
 

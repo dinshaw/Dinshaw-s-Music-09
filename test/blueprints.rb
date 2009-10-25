@@ -18,6 +18,13 @@ CmsPage.blueprint do
   body { Sham.description }
 end
 
+Comment.blueprint do
+  name
+  url { Sham.domain }
+  body { Sham.description }
+  email 
+end
+
 Gig.blueprint do
   time_start { Time.now }
   time_end { Time.now + 2.hours }
@@ -75,4 +82,5 @@ Sham.define do
   description  { Faker::Lorem.paragraphs(3).join("\n\n") }
   email { Faker::Internet.email }
   document { Tempfile.new('the attached document') }
+  domain { 'http://' + Faker::Internet.domain_name }
 end

@@ -6,10 +6,8 @@ require 'machinist/active_record'
 require 'sham'
 require 'faker'
 require File.expand_path(File.join(File.dirname(__FILE__), "/../../test/blueprints.rb"))
-
-
 require 'cucumber/rails/world'
-
+require 'email_spec/cucumber'
 # Whether or not to run each scenario within a database transaction.
 #
 # If you leave this to true, you can turn off traqnsactions on a

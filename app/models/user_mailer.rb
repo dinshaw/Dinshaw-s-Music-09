@@ -12,7 +12,6 @@ class UserMailer < ActionMailer::Base
 
   def notification(notification, user)
     setup_email(user)
-    from @from
     @subject    += notification.title
     @body[:text]  = notification.body    
     @body[:url]  = "http://dinshaw.us"
@@ -32,6 +31,7 @@ class UserMailer < ActionMailer::Base
     @headers['Reply-to'] = "DINSHAWW <info@dinshaw.us>"    
     @recipients  = "#{user.email}"
     @from        = "#{SITE_NAME} <#{ActionMailer::Base.smtp_settings[:user_name]}>"
+    from @from
     @subject     = "#{SITE_NAME}: "
     @sent_on     = Time.now
     @body[:user] = user
