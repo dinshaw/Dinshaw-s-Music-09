@@ -14,6 +14,7 @@ class GigSweeper < ActionController::Caching::Sweeper
   def expire_cache(gig)
     expire_page gigs_path 
     expire_page gig_path(gig)
+    expire_page '/index'
   end
 
 end
