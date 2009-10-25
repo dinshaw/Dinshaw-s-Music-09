@@ -5,7 +5,7 @@
 - form_tag password_resets_path do
   %p
     %label Email:
-    = text_field_tag "email"
+    = text_field_tag :email, nil, :class => :text
   
   %p 
     %button.button "Reset my password"
