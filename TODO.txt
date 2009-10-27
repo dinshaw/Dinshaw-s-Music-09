@@ -1,6 +1,4 @@
 Background song upload.
 Test meta tag helpers
 staging env
-cache pages review
-rss
-player flag for song
+Gig reformat for home page

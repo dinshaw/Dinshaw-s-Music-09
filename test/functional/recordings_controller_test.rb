@@ -8,13 +8,6 @@ class RecordingsControllerTest < ActionController::TestCase
         song.recordings.make
       end
     end
-    context '#index.xml' do
-      setup do
-        get :index, :format => :xml
-      end
-      should_render_template 'index.xml.builder'
-      should_assign_to :recordings
-    end
     context '#index.rss' do
       setup do
         get :index, :format => :rss
@@ -29,6 +22,14 @@ class RecordingsControllerTest < ActionController::TestCase
         doc = Nokogiri::XML(@controller.response.body)
         assert_equal Recording.count, doc.xpath('//item').size
       end
+    end
+    
+    context '#for_player.xml' do
+      setup do
+        get :for_player, :format => :xml
+      end
+      should_render_template 'for_player.xml.builder'
+      should_assign_to :recordings
     end
   end
 end
