@@ -1,15 +1,12 @@
-Featuer: Gigs
+Feature: Gigs
   Scenario: From the homepage
     Given there are "3" "upcoming gigs" named "The River, MSG, and Kenny's"
     And I am on "the homepage"
     When I click "Gigs"
     Then I should be on "the gigs page"
     And I should see "The River"
-    And I should see "Location of The River"
-    And I should see "Directions to The River"
+
     And I should see "MSG"
-    And I should see "Location of MSG"
-    And I should see "Directions to MSG"
+
     And I should see "Kenny's"
-    And I should see "Location of Kenny's"
-    And I should see "Directions to Kenny's"
+

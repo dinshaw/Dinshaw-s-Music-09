@@ -5,5 +5,8 @@ class Admin::VenuesController < AdminController
      form[:description ].text_area_options = {:rows => 5}    
      form[:directions ].text_area_options = {:rows => 5}         
    end
+   aa.index do |index|
+     index.columns :name, :location, :url
+   end
  end
 end

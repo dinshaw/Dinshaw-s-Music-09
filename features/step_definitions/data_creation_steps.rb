@@ -3,7 +3,8 @@ Given /^there (?:are|is) "([^\"]*)" "([^\"]*)" named "([^\"]*)"$/ do |num, items
   case items
   when 'upcoming gigs', 'upcoming gig'
     split_names(names).each do |name| 
-      Gig.make(:venue => Venue.make(:name => name, :location => "Location of #{name}", :directions => "Directions to #{name}"))
+      address = Address.make
+      Gig.make(:venue => Venue.make(:name => name, :location => "Location of #{name}", :directions => "Directions to #{name}", :address => address))
     end
     
   when 'songs', 'song'

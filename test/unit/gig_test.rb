@@ -3,7 +3,7 @@ require 'test_helper'
 class GigTest < ActiveSupport::TestCase
   should_belong_to :venue
   should_belong_to :recording_session
-
+  
   context 'upcoming scope' do
     setup do
       @past_gig = Gig.make(:time_start => Time.now - 2.day)

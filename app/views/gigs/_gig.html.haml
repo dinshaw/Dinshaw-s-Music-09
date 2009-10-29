@@ -1,20 +1,11 @@
-.gig
-  %h3
-    %strong
-      = link_to gig.venue.name, gigs_path
-    /
-    = show_time(gig)
-  %p 
-    = gig.description
-  
-  - if defined?(full)
-    %p 
-      = gig.venue.location
-
-    - if !gig.venue.address.nil?
-      %p 
-        = full_address(gig.venue.address)
-
-    - if !gig.venue.directions.blank?            
-      %p 
-        = gig.venue.directions
+%tr{:class => cycle('even','odd')}
+  %td
+    = gig.time_start.to_s(:month_day)
+    \-
+    = gig.venue.address.city_state
+    %br
+    = link_to gig.venue.name, gig.venue.url
+    
+  %td
+    = truncate(gig.description, :length => 100)
+    = link_to('Details', gig)

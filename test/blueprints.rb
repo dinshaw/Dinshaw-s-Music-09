@@ -3,7 +3,7 @@ require 'sham'
 
 Address.blueprint do
   street { Faker::Address.street_address }
-  street_2
+  street_2 { '#1' }
   city { Faker::Address.city }
   state { Faker::Address.us_state_abbr }
   zip{ Faker::Address.zip_code }
@@ -74,6 +74,7 @@ Venue.blueprint do
   location { Sham.title }
   description
   directions { Sham.description }
+  url { Sham.domain }
 end
 
 Sham.define do

@@ -1,1 +1,3 @@
-= render :partial => 'gigs/gig', :collection => @gigs, :locals => { :full => true }  
+%table.small
+  %tbody
+    = render :partial => 'gigs/gig', :collection => @gigs, :locals => { :full => true }  
