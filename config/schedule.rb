@@ -21,13 +21,9 @@
 
 every 10.minutes do
   command '/bin/bash /home/dinshaw1/ar_mailer_monitor.sh'
-  command 'RAILS_ENV=production /bin/bash /home/dinshaw1/delayed_job_monitor.sh'
+  command '/bin/bash /home/dinshaw1/delayed_job_monitor.sh'
 end
 
 every 1.week do
   command 'cd /home/dinshaw1/dinshaw.us/current/log && /bin/bash /home/dinshaw1/log_rotate.sh'
-end
-
-every 2.minutes do
-  command 'wget -O /dev/null http://dinshaw.us/privacy 2>/dev/null'
 end

@@ -1,4 +1,4 @@
 Background song upload.
 Test meta tag helpers
 staging env
-Gig reformat for home page
+Expire index and gigs at 12

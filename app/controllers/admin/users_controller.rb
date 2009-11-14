@@ -8,4 +8,10 @@ class Admin::UsersController < AdminController
     end
     a.show.columns :email, :aasm_state, :created_at
   end
+  
+  def resend_activation
+    user = User.find(params[:id])
+    UserMailer.send_later(:deliver_signup_notification, user)
+    redirect_to admin_users_path
+  end
 end

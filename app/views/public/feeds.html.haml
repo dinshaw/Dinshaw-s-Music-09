@@ -1,10 +1,10 @@
 #feeds
   %ul
     %li
-      = link_to "Songs", songs_url(:format => :rss)
+      = link_to "Songs (#{Song.count})", songs_url(:format => :rss)
     %li
-      = link_to "Recordings", recordings_url(:format => :rss)
+      = link_to "Recordings (#{Recording.count})", recordings_url(:format => :rss)
     %li
-      = link_to "Gigs", gigs_url(:format => :rss)
+      = link_to "Gigs (#{Gig.count})", gigs_url(:format => :rss)
     %li
-      = link_to "Comments", comments_url(:format => :rss)      
+      = link_to "Comments (#{Comment.count})", comments_url(:format => :rss)      

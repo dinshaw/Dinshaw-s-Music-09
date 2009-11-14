@@ -32,7 +32,7 @@ Rails::Initializer.run do |config|
   config.load_paths += %W( #{RAILS_ROOT}/app/sweepers #{RAILS_ROOT}/admin #{RAILS_ROOT}/vendor/gems/RedCloth-4.2.2/ext/redcloth_scan )
   
   # Activate observers that should always be running
-  # config.active_record.observers = :user_observer
+  # config.active_record.observers = :gig_sweeper, :cms_page_sweeper, :comment_sweeper, :recording_sweeper, :song_sweeper
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.

@@ -23,5 +23,8 @@ $(function($){//on document ready
   $('.progress_spinner').hide('fast');
 
   $("#email_list_form").submitWithAjax();
-  $("#comment_form").submitWithAjax();  
+  $("#comment_form").submitWithAjax(); 
+  
+  $("#datepicker").datepicker(); 
+  alert('ad');
 });
