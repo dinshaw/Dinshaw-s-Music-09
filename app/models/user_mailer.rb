@@ -26,7 +26,7 @@ class UserMailer < ActionMailer::Base
   protected
   def setup_email(user)
     set_smtp_settings
-    @headers['Reply-to'] = "DINSHAWW <info@dinshaw.us>"    
+    @headers['Reply-to'] = "DINSHAW <info@dinshaw.us>"    
     @recipients  = "#{user.email}"
     @from        = "#{SITE_NAME} <#{ActionMailer::Base.smtp_settings[:user_name]}>"
     from @from

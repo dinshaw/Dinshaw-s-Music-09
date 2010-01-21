@@ -2,9 +2,9 @@ class CreateAnnouncements < ActiveRecord::Migration
   def self.up
     create_table :announcements do |t|
       t.string :title
-      t.body :text
+      t.text :body
       t.datetime :expiration
-
+      t.boolean :expires
       t.timestamps
     end
   end

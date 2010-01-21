@@ -7,8 +7,7 @@ Rails::Initializer.run do |config|
   BASE_DOMAIN = "dinshaw.us"
   
   config.gem "authlogic"
-  config.gem 'chriseppstein-compass', :lib => 'compass', :source => 'http://gems.github.com/'
-  config.gem 'haml', :lib => 'haml'
+  config.gem 'haml', :lib => 'haml', :version => '>=2.2.16'
   config.gem 'capistrano'
   config.gem 'collectiveidea-delayed_job', :lib => 'delayed_job', :source => 'http://gems.github.com'
   config.gem 'rubyist-aasm', :lib => 'aasm', :source => 'http://gems.github.com'
@@ -24,6 +23,8 @@ Rails::Initializer.run do |config|
   config.gem "RedCloth", :version => ">= 4.2.2", :source => "http://code.whytheluckystiff.net"
   config.gem "ambethia-recaptcha", :lib => "recaptcha/rails", :source => "http://gems.github.com"  
   config.gem "be9-acl9", :source => "http://gems.github.com", :lib => "acl9"  
+  config.gem 'compass', :lib => 'compass', :version => '=0.10.0.pre2'
+  config.gem "acts-as-taggable-on", :source => "http://gemcutter.org"
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.

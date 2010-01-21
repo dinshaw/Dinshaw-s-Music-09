@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
   helper_method :current_user_session, :current_user
 
-  before_filter :get_cms_page
+  before_filter :get_cms_page, :get_anouncements
 
   def get_cms_page
     controller = self.controller_name.titleize
@@ -33,6 +33,10 @@ class ApplicationController < ActionController::Base
     @comment = Comment.new
   end
 
+  def get_anouncements
+    
+  end
+  
   private
   def current_user_session
     return @current_user_session if defined?(@current_user_session)

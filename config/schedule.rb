@@ -21,7 +21,7 @@
 
 every 10.minutes do
   command '/bin/bash /home/dinshaw1/ar_mailer_monitor.sh'
-  command '/bin/bash /home/dinshaw1/delayed_job_monitor.sh'
+  command '/bin/bash RAILS_ENV=production /home/dinshaw1/delayed_job_monitor.sh'
 end
 
 every 1.week do

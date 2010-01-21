@@ -14,4 +14,4 @@
           = recording.song.composition_date.strftime("%x")
       
       %li
-        %embed{:src => recording.track.url,  :autostart => 'false',  :loop => 'false', :volume => 100 }
+        = render :partial => 'recordings/recording', :locals => { :recording => recording }

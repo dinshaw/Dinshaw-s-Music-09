@@ -121,7 +121,8 @@ namespace :deploy do
     run "chmod 775 ~/log_rotate.sh"
   end
   after "deploy:update_code", "deploy:install_scripts"
-
+  
+  after "deploy:install_scripts", "deploy:cleanup"  
 end
 
 namespace :delayed_job do
