@@ -1,5 +1,6 @@
 class Admin::UsersController < AdminController
   admin_assistant_for User do |a|
+    a.actions << :destroy      
     a.form do |form|
       form.columns :email
     end

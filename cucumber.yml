@@ -1,3 +1,0 @@
-default: -r features/support/plain.rb -r features/step_definitions -r features/plain/step_definitions features/plain
-
-enhanced: -r features/support/enhanced.rb -r features/step_definitions -r features/enhanced/step_definitions features/enhanced

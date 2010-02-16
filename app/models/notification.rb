@@ -18,6 +18,6 @@ When: #{gig.time_start.to_s(:gig)} to #{gig.time_end.to_s(:time_end)}
   
   def gig_subject(gig_id)
     gig = Gig.find(gig_id)
-    ['Live at',gig.venue.name+':', gig.time_start.to_s(:gig)].join(" ")
+    ['Live at',gig.venue.name+':', gig.time_start.to_s(:gig),'to',gig.time_end.to_s(:time_end)].join(" ")
   end
 end

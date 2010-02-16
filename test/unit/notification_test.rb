@@ -29,7 +29,7 @@ A, C, or E to 42nd st.
 When: #{@time.to_s(:gig)} to #{(@time+2.hours).to_s(:time_end)}
       EOS
       
-      @gig_subject = "Live at The River: #{@time.to_s(:gig)}"
+      @gig_subject = "Live at The River: #{@time.to_s(:gig)} to #{(@time+2.hours).to_s(:time_end)}"
       @notification = Notification.new
     end
 
