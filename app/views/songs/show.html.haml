@@ -1,7 +1,10 @@
-- @song.title
 #song
   - unless @song.recordings.blank?
     = render :partial => 'recordings/recordings', :locals => { :recordings => @song.recordings, :showing => 'song' }
+
+    %h4.close-bottom
+      Short link:
+      = @song.bitly
 
     %h4.close-bottom
       Notes:
