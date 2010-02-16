@@ -1,5 +1,4 @@
 config.gem "thoughtbot-shoulda", :lib => "shoulda", :source => "http://gems.github.com"
-config.gem 'cucumber'
 config.gem 'notahat-machinist', :lib => 'machinist'
 config.gem 'faker'
 require 'test/unit' # add this line 
