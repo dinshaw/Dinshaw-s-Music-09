@@ -10,6 +10,7 @@ Rails::Initializer.run do |config|
 
   config.gem 'compass', :lib => 'compass', :version => '=0.10.0.pre2'
   config.gem 'compass-colors', :lib => false
+  config.gem "friendly_id", :version => ">= 2.3.0"
   config.gem 'fancy-buttons', :lib => false
   config.gem 'haml', :lib => 'haml'
   config.gem 'collectiveidea-delayed_job', :lib => 'delayed_job', :source => 'http://gems.github.com'
