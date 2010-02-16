@@ -9,8 +9,8 @@ Rails::Initializer.run do |config|
   config.gem "authlogic"
 
   config.gem 'compass', :lib => 'compass', :version => '=0.10.0.pre2'
-  config.gem 'compass-colors'
-  config.gem 'fancy-buttons'
+  config.gem 'compass-colors', :lib => false
+  config.gem 'fancy-buttons', :lib => false
   config.gem 'haml', :lib => 'haml'
   config.gem 'collectiveidea-delayed_job', :lib => 'delayed_job', :source => 'http://gems.github.com'
   config.gem 'rubyist-aasm', :lib => 'aasm', :source => 'http://gems.github.com'
