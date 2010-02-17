@@ -1,7 +1,7 @@
 #notification
   %h2= @notification.title
   #body
-    = @notification.body
+    = textilize @notification.body
 
 - if @notification.delivered_at.nil?
   - form_for @notification, :url => deliver_admin_notification_path(@notification), :html => { :method => :post } do |f|
