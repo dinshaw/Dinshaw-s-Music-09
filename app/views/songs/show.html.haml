@@ -2,8 +2,7 @@
   - unless @song.recordings.blank?
     = render :partial => 'recordings/recordings', :locals => { :recordings => @song.recordings, :showing => 'song' }
 
-  %input.close-bottom
-    = @song.bitly
+  %input.close-bottom{ :value => @song.bitly }
 
   %h4.close-bottom
     Notes:
