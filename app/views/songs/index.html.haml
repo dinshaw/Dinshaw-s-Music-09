@@ -1,3 +1,4 @@
+%a.right{:href => poems_songs_path} poems
 #songs
   %table
     %thead
@@ -9,6 +10,6 @@
       - @songs.each do |song|
         %tr{ :class => cycle('even','odd') }
           %td= link_to song.title, song
-          %td= link_to song.recordings.count, song
+          %td= link_to song.recordings.public.count, song
           %td= link_to song.comments.count, song
 

@@ -4,7 +4,7 @@ class Admin::RecordingsController < AdminController
   admin_assistant_for Recording do |a|
     a.actions << :destroy
     a.index do |index|
-      index.columns :song, :recording_session, :in_player_rotation
+      index.columns :song, :recording_session, :in_player_rotation, :public
     end      
     a.form do |form|
       form[:lyrics ].text_area_options = {:rows => 5}

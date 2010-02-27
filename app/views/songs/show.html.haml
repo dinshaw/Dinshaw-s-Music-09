@@ -1,6 +1,6 @@
 #song
-  - unless @song.recordings.blank?
-    = render :partial => 'recordings/recordings', :locals => { :recordings => @song.recordings, :showing => 'song' }
+  - unless @song.recordings.public.blank?
+    = render :partial => 'recordings/recordings', :locals => { :recordings => @song.recordings.public, :showing => 'song' }
 
   %input.close-bottom{ :value => @song.bitly }
 

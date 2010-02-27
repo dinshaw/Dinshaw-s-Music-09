@@ -42,10 +42,9 @@ end
 
 Recording.blueprint do
   notes { Sham.description }
-  # paperclip
   track { Sham.document }
-  # belongs_to :recording_session { RecordingSession.make }    
   recording_session
+  public { false }  
 end
 
 RecordingSession.blueprint do
@@ -61,6 +60,7 @@ Song.blueprint do
   notes { Sham.description }
   composition_date  { Time.now }
   composition_location { Sham.title }
+  poem { false }
 end
 
 User.blueprint do

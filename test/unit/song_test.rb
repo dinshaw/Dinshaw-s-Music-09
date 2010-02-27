@@ -8,7 +8,7 @@ class SongTest < ActiveSupport::TestCase
     setup do
       @bitly_url = stub(:short_url => 'http://bit.ly/asdf')
       @bitly = stub(:shorten => @bitly_url)      
-      Bitly.expects(:new).returns(@bitly)
+      Bitly.stubs(:new).returns(@bitly)
     end
     should 'create a bitly url' do
       assert_equal Song.make.bitly, 'http://bit.ly/asdf'

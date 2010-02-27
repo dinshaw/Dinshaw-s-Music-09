@@ -25,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :recording_sessions, :gigs, :venues, :addresses, :comments
   map.resources :recordings, :collection => { :for_player => :get }
 
-  map.resources :songs, :has_many => :comments
+  map.resources :songs, :has_many => :comments, :collection => { :poems => :get }
   map.privacy 'privacy', :controller => 'public', :action => 'privacy'
   map.contact 'contact', :controller => 'public', :action => 'contact'
   map.feeds 'feeds', :controller => 'public', :action => 'feeds'

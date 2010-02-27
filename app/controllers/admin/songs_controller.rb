@@ -4,7 +4,7 @@ class Admin::SongsController < AdminController
   admin_assistant_for Song do |a|
     # a.actions << :destroy
     a.index do |index|
-      index.columns :title, :recordings, :bitly
+      index.columns :title, :recordings, :bitly, :poem
     end      
     a.form do |form|
       form[:lyrics ].text_area_options = {:rows => 5}

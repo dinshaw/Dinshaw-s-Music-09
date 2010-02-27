@@ -13,9 +13,13 @@ class Song < ActiveRecord::Base
   validates_presence_of :composition_location
   
   default_scope :order => :title
+  named_scope :songs, :conditions => { :poem => [false,nil] }
+  named_scope :poems, :conditions => { :poem => true }
   
   private
   def shorten_url
     update_attribute :bitly, Bitly.new(BITLY_USER, BITLY_API_KEY).shorten(song_url(self, :host => "http://#{BASE_DOMAIN}")).short_url
+  rescue
+    Rails.logger.error { "Bitly error for song: #{self.title}" }
   end
 end

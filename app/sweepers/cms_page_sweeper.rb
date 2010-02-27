@@ -18,6 +18,9 @@ class CmsPageSweeper < ActionController::Caching::Sweeper
       expire_page '/contact'
     when /unsubscribe/i
       expire_page '/unsubscribe'
+    when /Public: Index/i
+      expire_page '/index'
+    
     end
 
   end
