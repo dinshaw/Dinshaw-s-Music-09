@@ -1,0 +1,12 @@
+#songs
+  %table
+    %thead
+      %tr
+        %th Title
+        %th Comments
+    %tbody
+      - @poems.each do |poem|
+        %tr{ :class => cycle('even','odd') }
+          %td= link_to poem.title, poem
+          %td= link_to poem.comments.count, poem
+
