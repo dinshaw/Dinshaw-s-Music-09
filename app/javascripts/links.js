@@ -12,7 +12,7 @@ $(function($){//on document ready
   // Add 'external' CSS class to all external links
   $('a:external').addClass('external');
   // $('a:external_img').addClass('external_img');
-  $('a:external, a:external_img').click(function(){
+  $('a:external, a:external_img, a.external, .external a, .new_window').click(function(){
     window.open(this.href);
     return false;
   });

@@ -24,7 +24,4 @@ $(function($){//on document ready
 
   $("#email_list_form").submitWithAjax();
   $("#comment_form").submitWithAjax(); 
-  
-  $("#datepicker").datepicker(); 
-  alert('ad');
 });

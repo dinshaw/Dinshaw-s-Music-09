@@ -6,7 +6,7 @@
     /
     = show_time(gig)
   %p 
-    = gig.description
+    = textilize gig.description
   
   - if defined?(full)
     %p 
@@ -18,4 +18,4 @@
 
     - if !gig.venue.directions.blank?            
       %p 
-        = gig.venue.directions
+        = textilize gig.venue.directions
