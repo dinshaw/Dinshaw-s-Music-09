@@ -2,7 +2,7 @@
 .gig
   %h3
     %strong
-      = link_to gig.venue.name, gig.venue.url
+      = link_to gig.venue.name, gig.venue.url, :class => :external
     /
     = show_time(gig)
   %p 

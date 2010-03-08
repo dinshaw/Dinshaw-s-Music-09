@@ -4,8 +4,8 @@
     \-
     = gig.venue.address.city_state
     %br
-    = link_to gig.venue.name, gig.venue.url
+    = link_to gig.venue.name, gig.venue.url, :class => :external
     
-  %td
+  %td.auto_external
     = truncate(gig.description, :length => 100)
     = link_to('Details', gig)
