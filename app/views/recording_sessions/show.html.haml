@@ -1,11 +1,8 @@
-%h2
-  Recording Session:
-  %strong
-    = @recording_session.title
 %p
-  = @recording_session.start_date 
-  to 
-  = @recording_session.end_date
+  = @recording_session.start_date.strftime('%m/%d/%y')
+  - if @recording_session.start_date != @recording_session.end_date
+    to 
+    = @recording_session.end_date.strftime('%m/%d/%y')
   
 =textilize @recording_session.description
 

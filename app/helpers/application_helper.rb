@@ -9,6 +9,8 @@ module ApplicationHelper
     @page_header || case
     when @song
       @song.title
+    when @recording_session
+      ['Session:',@recording_session.title].join(' ')
     else
       @cms_page.title
     end
