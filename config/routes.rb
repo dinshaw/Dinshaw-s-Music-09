@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # needed for shared host messing up routes
   map.connect '/admin/recordings/autocomplete_song', :controller => 'admin/recordings', :action => 'autocomplete_song'
+  map.connect '/admin/recordings/autocomplete_recording_session', :controller => 'admin/recordings', :action => 'autocomplete_recording_session'
 
   map.namespace :admin do |admin|
     admin.resources :songs, :recordings, :recording_sessions, :gigs, :venues, :addresses, :comments, :cms_pages
