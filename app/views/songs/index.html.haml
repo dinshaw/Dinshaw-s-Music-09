@@ -1,15 +1,13 @@
-%a.right{:href => poems_songs_path} poems
 #songs
-  %table
-    %thead
-      %tr
-        %th Title
-        %th Recordings
-        %th Comments
-    %tbody
-      - @songs.each do |song|
-        %tr{ :class => cycle('even','odd') }
-          %td= link_to song.title, song
-          %td= link_to song.recordings.public.count, song
-          %td= link_to song.comments.count, song
+  %ul.list
+    - @songs.each do |song|
+      %li{ :class => cycle('even','odd') }
+        = link_to song.title, song
+        - unless song.recordings.empty?
+          %span.recording_count
+            = ['(r:',song.recordings.count,')'].join
+        - unless song.comments.empty?
+          %span.recording_count
+            = ['(c:',song.comments.count,')'].join            
 
+%a.right{:href => poems_songs_path} poems

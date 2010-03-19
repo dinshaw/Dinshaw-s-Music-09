@@ -1,4 +1,8 @@
 #song
+  %p
+    Comp date:
+    = @song.composition_date.strftime("%b %e, %Y")
+    
   - unless @song.recordings.public.blank?
     = render :partial => 'recordings/recordings', :locals => { :recordings => @song.recordings.public, :showing => 'song' }
 

@@ -4,7 +4,8 @@
   %head
     %title= page_title
     = javascript_include_tag "prototype", "effects", "controls"
-    = admin_assistant_includes :theme => 'activescaffold'
+    = admin_assistant_includes
+    = stylesheet_link_tag 'admin', :media => 'screen'    
 
   %body#admin
     #container.wrap
@@ -35,6 +36,8 @@
           %a{:href => '/admin/comments'} Comments
         %li
           %a{:href => '/admin/cms_pages'} CMS Pages
+        %li
+          %a{:href => edit_user_path(current_user)} Password
           
     #admin_content
       #flash_block
