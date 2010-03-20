@@ -1,8 +1,4 @@
 %li{:class => cycle('even','odd')}
   = gig.time_start.to_s(:month_day)
   \-
-  = gig.venue.address.city_state
-  @
-  = gig.venue.name
-  \|
-  = link_to('Details', gig)
+  = [link_to(gig.venue.name, gig), gig.venue.address.city_state].join(', ')
