@@ -5,4 +5,7 @@ module UserHelper
   def aasm_state_html_for_index(user)
     [user.aasm_current_state, (user.pending? ? link_to("[resend]", resend_activation_admin_user_path(user)) : nil)].compact.join(" ")
   end
+  def email_html_for_index(user)
+    mail_to user.email, user.email
+  end
 end

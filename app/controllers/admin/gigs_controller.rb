@@ -4,7 +4,7 @@ class Admin::GigsController < AdminController
   admin_assistant_for Gig do |a|
     a.actions << :destroy
     a.index do |index|
-      index.columns :venue, :description, :time_start, :time_end
+      index.columns :venue, :time_start, :time_end
     end
     a.form do |form|
       form.columns :description, :venue, :time_start, :time_end

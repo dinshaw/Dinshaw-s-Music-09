@@ -11,19 +11,21 @@ class Admin::NotificationsController < AdminController
     a.show.columns :title, :body
   end
 
-  def new_from_gig
-    @notification = Notification.new
-    @notification.body =  @notification.gig_info(params[:gig_id])
-    @notification.title =  @notification.gig_subject(params[:gig_id])    
-    render :action => :new
-  end
-
   def show
     @notification = Notification.find(params[:id])
   end
 
   def deliver
-    Delayed::Job.enqueue( MailingJob.new(params[:id])) 
+    case Rails.env
+    when 'development'
+      notification = Notification.find(params[:id])
+      User.active.unnotified(params[:id]).find(:all,  :limit => 3 ).each do |user|
+        GigMailer.deliver_gig_notification(notification, user, notification.noteworthy)
+        user.notify!(notification.id)
+      end
+    else
+      Delayed::Job.enqueue( MailingJob.new(params[:id], 'gig')) 
+    end
     flash[:notice] = 'Notifications being sent...'
     redirect_to admin_notifications_path
   end

@@ -7,4 +7,5 @@ class Address < ActiveRecord::Base
   def city_state
     [city,state].join(", ")
   end
+  
 end

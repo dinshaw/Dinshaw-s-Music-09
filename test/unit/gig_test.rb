@@ -16,4 +16,12 @@ class GigTest < ActiveSupport::TestCase
       assert_equal Gig.upcoming, [@first_gig, @second_gig, @third_gig]      
     end
   end
+  context 'upcoming booean' do
+    should 'return true if the gig is in the future' do
+      assert_equal Gig.make(:time_start => Time.now + 3.days).upcoming?, true
+    end
+    should 'return false if the gig is in the past' do
+      assert_equal Gig.make(:time_start => Time.now - 3.days).upcoming?, false
+    end
+  end
 end

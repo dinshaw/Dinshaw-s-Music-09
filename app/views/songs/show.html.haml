@@ -8,12 +8,12 @@
 
   %input.close-bottom{ :value => @song.bitly }
 
-  %h4.close-bottom
-    Notes:
-  = textilize @song.notes
+  - if !@song.notes.blank?
+    %h4.close-bottom
+      Notes:
+    = textilize @song.notes
 
   #song_container
-
     #lyrics
       %h4.close-bottom Lyrics:
       =textilize @song.lyrics

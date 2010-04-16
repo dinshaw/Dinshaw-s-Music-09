@@ -3,9 +3,9 @@
     - @songs.each do |song|
       %li{ :class => cycle('even','odd') }
         = link_to song.title, song
-        - unless song.recordings.empty?
+        - unless song.recordings.public.empty?
           %span.recording_count
-            = ['(r:',song.recordings.count,')'].join
+            = ['(r:',song.recordings.public.count,')'].join
         - unless song.comments.empty?
           %span.recording_count
             = ['(c:',song.comments.count,')'].join            

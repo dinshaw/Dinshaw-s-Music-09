@@ -16,7 +16,13 @@ class AdminAssistant
   class PaperclipColumn < Column
     class IndexView < View
       def html(record)
-        record.track_file_name
+        [
+          '<a href="',
+          record.track.url,
+          '" class="external">',
+          record.track_file_name,
+          '</a>'
+        ].join
       end
     end
   end

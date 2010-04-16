@@ -13,4 +13,8 @@ class Admin::CmsPagesController < AdminController
       index.columns :reference_string, :title, :meta_keyword, :meta_description
     end
   end
+  
+  def show
+    @cms_page = CmsPage.find(params[:id])
+  end
 end

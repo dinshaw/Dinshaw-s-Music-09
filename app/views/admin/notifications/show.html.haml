@@ -1,6 +1,8 @@
 #notification
-  %h2= @notification.title
-  #body
+  %h3
+    %strong Subject:
+    = @notification.title
+  .body
     = textilize @notification.body
 
 - if @notification.delivered_at.nil?

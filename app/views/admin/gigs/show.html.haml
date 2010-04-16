@@ -1,5 +1,24 @@
-= render :partial => '/gigs/gig', :locals => { :full => true }
+%h2
+  Live @
+  = @gig.venue.name
 
-- form_for Notification.new, :url => new_from_gig_admin_notification_path do |form|
-  = hidden_field_tag :gig_id, @gig.id
-  %button.button Generate Notification
+= render :partial => '/gigs/gig_full', :locals => { :gig => @gig }
+
+- if @gig.upcoming?
+  %fieldset.new_notification
+    %legend
+      Notification
+    - form_for [:admin, Notification.new] do |f|
+      = f.hidden_field :kind, :value => 'Gig'
+      = f.hidden_field :noteworthy_id, :value => @gig.id
+      = f.hidden_field :noteworthy_type, :value => 'Gig'
+      %p
+        = f.label :title, 'Subject'
+        DINSHAW:
+        = f.text_field :title, :value => @gig.subject, :class => :subject
+
+      %p
+        = f.label :body, 'Body'
+        = f.text_area :body, :class => :body
+
+      = render :partial => 'shared/form_submit', :locals => { :text => 'Generate Notification' }

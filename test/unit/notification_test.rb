@@ -22,11 +22,8 @@ Dinshaw Live!
 
 My band playing live!
 
-Where: The River (http://theriver.com)
-10 ave between 42 and 43
-A, C, or E to 42nd st.
-
 When: #{@time.to_s(:gig)} to #{(@time+2.hours).to_s(:time_end)}
+Where: The River (http://theriver.com)
       EOS
       
       @gig_subject = "Live at The River: #{@time.to_s(:gig)} to #{(@time+2.hours).to_s(:time_end)}"

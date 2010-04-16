@@ -13,6 +13,10 @@ class Admin::SongsController < AdminController
     end
   end
 
+  def show
+    @song = Song.find(params[:id])
+  end
+  
   protected
   
   # This is run after all saves, whether they're creates or updates

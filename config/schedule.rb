@@ -27,3 +27,7 @@ end
 every 1.week do
   command 'cd /home/dinshaw1/dinshaw.us/current/log && /bin/bash /home/dinshaw1/log_rotate.sh'
 end
+
+every 1.day do
+  command 'rm /home/dinshaw1/dinshaw.us/current/public/index.html'
+end

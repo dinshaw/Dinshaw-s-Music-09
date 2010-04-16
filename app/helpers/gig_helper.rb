@@ -16,4 +16,8 @@ module GigHelper
     s << gig.time_end.to_s(:time_end) if opts[:end]
     s.join(" ")
   end
+  
+  def description_html_for_index(gig)
+    'sad'
+  end
 end

@@ -11,11 +11,10 @@
     #container.wrap
       %h1
         Admin Area
-      %p
-        = link_to "Public Side", root_path
-
     #admin_nav
       %ul
+        %li
+          = link_to "Public Side", root_path
         %li
           %a{:href => '/admin/songs'} Songs
         %li
