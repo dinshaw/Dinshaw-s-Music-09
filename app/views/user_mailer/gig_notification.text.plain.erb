@@ -1,0 +1,8 @@
+<%= @text %>
+
+When: <%= gig.time_start.to_s(:gig) %> to <%= gig.time_end.to_s(:time_end) %>
+Where: <%= gig.venue.name %> <%= ['(',gig.venue.url,')'].join if !gig.venue.url.blank? %>
+
+<%= gig.description %>
+
+<%= render :partial => 'shared/email_footer.erb' %>

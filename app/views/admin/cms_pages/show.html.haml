@@ -1,0 +1,20 @@
+.admin_assistant.index.admin_songs
+  .aa_header
+    %h2
+      = @cms_page.title
+    %p
+      = @cms_page.reference_string
+      
+    - if !@cms_page.sub_title.blank?
+      %h3
+        = link_to @cms_page.sub_title, @cms_page.sub_title_ur     
+  %p 
+    Body:
+    = @cms_page.body
+
+  %p
+    Keywords:
+    = @cms_page.meta_keyword
+  %p
+    Description:
+    = @cms_page.meta_description

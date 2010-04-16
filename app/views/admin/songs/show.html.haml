@@ -1,0 +1,19 @@
+.admin_assistant.index.admin_songs
+  .aa_header
+    %h2
+      =@song.title
+
+#song
+  %p
+    Comp date:
+    = @song.composition_date.strftime("%b %e, %Y")
+    
+  - if !@song.notes.blank?
+    %h4.close-bottom
+      Notes:
+    = textilize(@song.notes)
+
+  #song_container
+    #lyrics
+      %h4.close-bottom Lyrics:
+      = textilize(@song.lyrics)

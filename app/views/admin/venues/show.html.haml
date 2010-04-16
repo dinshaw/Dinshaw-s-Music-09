@@ -1,0 +1,18 @@
+.admin_assistant.index.admin_songs
+  .aa_header
+    %h2
+      =@venue.name
+
+  = link_to @venue.url, @venue.url, :class => :external
+  
+  %h4 Description  
+  = textilize @venue.description
+  
+  %h4 Address
+  %p= full_address(@venue.address)
+  
+  %h4 Location
+  = textilize @venue.location  
+  
+  %h4 Directions  
+  = textilize @venue.directions
